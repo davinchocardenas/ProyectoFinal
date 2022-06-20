@@ -38,6 +38,7 @@ function erase(obj){
       })
 }
 function getData(obj){
+  
   let codigo = obj.children[0].innerHTML;
   let cc = obj.children[1].innerHTML;
   let nombre = obj.children[2].innerHTML;
@@ -58,6 +59,7 @@ function getData(obj){
   document.getElementById("txtedadE").value= edad;
   document.getElementById("txtrolE").value= rol;
   document.getElementById("txtcontrasenaE").value= contrasena;
+
 }
 
 function getGenerarReporte(e){

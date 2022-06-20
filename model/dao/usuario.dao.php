@@ -106,11 +106,10 @@
     }
     public function mldUpdateUsuario(){
         $sql = "CALL `spUpdateUsuario`(?, ?, ?, ?, ?, ?, ? , ?);";
-
+             $estado = false;
 
         try {
             $objcon = new Conexion();
-
             $stmt = $objcon -> getConect() -> prepare($sql); 
                 $stmt -> bindParam(1, $this -> cc,        PDO::PARAM_STR);
                 $stmt -> bindParam(2, $this -> nombre,    PDO::PARAM_STR);
@@ -120,6 +119,8 @@
                 $stmt -> bindParam(6, $this -> edad,    PDO::PARAM_STR);
                 $stmt -> bindParam(7, $this -> rol,        PDO::PARAM_STR);
                 $stmt -> bindParam(8, $this -> contrasena,        PDO::PARAM_STR);
+
+                $estado = $stmt -> execute();
   
             
         } catch (PDOExepcion $e) {
