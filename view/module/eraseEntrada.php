@@ -1,13 +1,13 @@
 <?php
     
-    eraseUser();
-     function eraseUser(){
+    eraseEntrada();
+     function eraseEntrada(){
         try {
-            $objDtoUser = new User();
-            $objDtoUser -> setcc($_GET["codigo"]);
-            $objDaoUser = new UserModel($objDtoUser);
+            $objDtoEntrada = new Entrada();
+            $objDtoEntrada -> setId_Registro($_GET["id_Registro"]);
+            $objDaoEntrada = new EntradaModel($objDtoEntrada);
 
-            if ($objDaoUser -> mldEraseUsuario() == true) {
+            if ($objDaoEntrada -> mldEraseRegistro() == true) {
                 
                 print "<script>
                 
@@ -20,7 +20,7 @@
                 
                 </script>";
 
-                include_once "view/module/user.php";
+                include_once "view/module/verentrada.php";
             }
         } catch (Exeption $e) {
             print "hubo un error al borrar ".$e ->getMesagge;

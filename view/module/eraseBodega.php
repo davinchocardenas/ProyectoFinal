@@ -1,12 +1,12 @@
 <?php
 //echo "llego";
-eraseProveedor();
-function eraseProveedor(){
+eraseBodega();
+function eraseBodega(){
     try {
-        $objDtoProveedor = new Proveedor();
-        $objDtoProveedor -> setId_Proveedor($_GET['id_Proveedor']);
-        $objDaoProveedor = new ProveedorModel($objDtoProveedor);
-        if ( $objDaoProveedor -> mldEraseProveedor() == true ) {
+        $objDtoBodega = new Bodega();
+        $objDtoBodega -> setId_Bodega($_GET['id_Bodega']);
+        $objDaoBodega = new BodegaModel($objDtoBodega);
+        if ( $objDaoBodega -> mldEraseBodega() == true ) {
 
             echo "<script>
                     Swal.fire(
@@ -15,7 +15,7 @@ function eraseProveedor(){
                         'success'
                     )
                 </script>";
-                include_once 'view/module/verproveedor.php'; 
+                include_once 'view/module/verbodega.php'; 
         }
 
     } catch ( PDOException $e ) {
@@ -25,8 +25,4 @@ function eraseProveedor(){
 
 
 }
-
 ?>
-
-
-

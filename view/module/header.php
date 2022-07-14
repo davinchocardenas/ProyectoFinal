@@ -1,16 +1,16 @@
 <header class="main-header">
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>S</b>NA</span>
+      <span class="logo-mini"><b></b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Sena</b></span>
+      <span class="logo-lg"><b>Amjotex</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
       <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-        <span class="sr-only">Toggle navigation</span>
+        <span class="sr-only"></span>
       </a>
 
       <div class="navbar-custom-menu">
@@ -18,22 +18,24 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <span class="hidden-xs">Becerra</span>
+              
+              <span class="hidden-xs">salir?</span>
             </a>
             <ul class="dropdown-menu">
+ 
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-right">
                   <form method="post">
                     <input type="hidden" name="txtSalir">
-                    <button type="submit" class="btn btn-default btn-flat">Cerrar</button>
-                  </form>
+                    <button type="submit" class="btn btn-default btn-flat">terminar con la secion actual</button>
+                  </form> 
                   <?php
-                    if (isset($_POST['txtSalir'])){
-                      $_SESSION['login'] = false;
-                      unset($_SESSION['login']);
-                      header('location: index.php');
-                    }
+
+                  if (isset($_POST["txtSalir"])) {
+                    unset($_SESSION["login"]);
+                    header("location: index.php");
+                  }
                   ?>
                 </div>
               </li>

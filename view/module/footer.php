@@ -1,10 +1,11 @@
-<footer class="main-footer">
+
+  <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 1.1.0
+      <b>Version</b>1.0.0
     </div>
-    <strong>Copyright &copy; 2022-2023 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
-    reserved.
+    <strong>Copyright &copy; 2022-2027 <a href="">AMJOTEX</a>.</strong> todos los derechos reservados
   </footer>
+
 
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
@@ -43,43 +44,55 @@
 <script src="view/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="view/bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="view/dist/js/adminlte.min.js"></script>
+
+
 <!-- DataTables -->
 <script src="view/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="view/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<!-- AdminLTE App -->
-<script src="view/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="view/dist/js/demo.js"></script>
+<!-- page script -->
+
 <script src="view/js/validate.js"></script>
 <script src="view/js/validateproveedor.js"></script>
-<script src="view/js/crud.js"></script>
+<script src="view/js/validatebodega.js"></script>
+<script src="view/js/validatecategoria.js"></script>
+<script src="view/js/validateproducto.js"></script>
+<script src="view/js/validateentrada.js"></script>
+<script src="view/js/creud.js"></script>
 <script src="view/js/ohsnap.js"></script>
-<script src="view/js/TweenMax.min.js"></script>
+
 <script>
   $(function () {
+    
     $('#users').DataTable({
-      language: {
-        "decimal": "",
-        "emptyTable": "No hay información",
-        "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
-        "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
-        "infoFiltered": "(Filtrado de _MAX_ total entradas)",
-        "infoPostFix": "",
-        "thousands": ",",
-        "lengthMenu": "Mostrar _MENU_ Entradas",
-        "loadingRecords": "Cargando...",
-        "processing": "Procesando...",
-        "search": "Buscar:",
-        "zeroRecords": "Sin resultados encontrados",
-        "paginate": {
-            "first": "Primero",
-            "last": "Ultimo",
-            "next": "Siguiente",
-            "previous": "Anterior"
+    "language": {
+        "sProcessing":    "Procesando...",
+        "sLengthMenu":    "Mostrar _MENU_ registros",
+        "sZeroRecords":   "No se encontraron resultados",
+        "sEmptyTable":    "Ningún dato disponible en esta tabla",
+        "sInfo":          "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+        "sInfoEmpty":     "Mostrando registros del 0 al 0 de un total de 0 registros",
+        "sInfoFiltered":  "(filtrado de un total de _MAX_ registros)",
+        "sInfoPostFix":   "",
+        "sSearch":        "Buscar:",
+        "sUrl":           "",
+        "sInfoThousands":  ",",
+        "sLoadingRecords": "Cargando...",
+        "oPaginate": {
+            "sFirst":    "Primero",
+            "sLast":    "Último",
+            "sNext":    "Siguiente",
+            "sPrevious": "Anterior"
+        },
+        "oAria": {
+            "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
         }
-      }
-    })
+    }
   })
+})
+
 </script>
 </body>
 </html>

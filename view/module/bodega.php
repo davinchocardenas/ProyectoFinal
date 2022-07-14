@@ -1,11 +1,11 @@
-<input type="text" name="txtId_Proveedor" id="txtId_Proveedor">
+<input type="text" name="txtId_Bodega" id="txtId_Bodega">
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
-  <h1 class="fa fa-truck">
-      Proveedor
-      <small>creacion de proveedor</small>
+    <h1>
+      Bodega
+      <small>creacion de bodega</small>
     </h1>
     <ol class="breadcrumb">
       <li><a href="index.php"><i class="fa fa-user"></i>Home</a></li>
@@ -28,7 +28,7 @@
             <i class="fa fa-times"></i></button>
         </div>
       </div>
-      <form method="post" id="frmProveedor">
+      <form method="post" id="frmBodega">
         <div class="box-body">
           <div class="row">
             <div class="col-lg-6 col-xs-6">
@@ -43,9 +43,9 @@
             <div class="col-lg-6 col-xs-6">
               <!-- texto box -->
               <div class="input-group">
-                <span class="input-group-addon">Direccion</span>
-                <input type="text" class="form-control" id="txtDireccion" name="txtDireccion">
-                <span class="input-group-addon">D</span>
+                <span class="input-group-addon">Ubicacion</span>
+                <input type="text" class="form-control" id="txtUbicacion" name="txtUbicacion">
+                <span class="input-group-addon">U</span>
               </div>
             </div>
             <!-- ./col -->
@@ -55,18 +55,9 @@
             <div class="col-lg-6 col-xs-6">
               <!-- texto box -->
               <div class="input-group">
-                <span class="input-group-addon">Agente</span>
-                <input type="text" class="form-control" id="txtAgente" name="txtAgente">
-                <span class="input-group-addon">A</span>
-              </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-6 col-xs-6">
-              <!-- texto box -->
-              <div class="input-group">
-                <span class="input-group-addon">Telefono</span>
-                <input type="text" class="form-control" id="txtTelefono" name="txtTelefono">
-                <span class="input-group-addon"><i class="fa fa-mobile"></i></span>
+                <span class="input-group-addon">Seccion</span>
+                <input type="text" class="form-control" id="txtSeccion" name="txtSeccion">
+                <span class="input-group-addon">S</span>
               </div>
             </div>
             <!-- ./col -->
@@ -75,7 +66,7 @@
         <!-- /.box-body -->
         <div class="box-footer">
 
-          <button class="btn btn-app" onclick="validateproveedor(event)">
+          <button class="btn btn-app" onclick="validateBodega(event)">
             <i class="fa fa-save"></i> Guardar
           </button>
 
@@ -84,12 +75,11 @@
       </form>
       <?php
       if (isset($_POST['txtNombre'])) {
-        $objCtrProveedor = new ProveedorController();
-        $objCtrProveedor->setInsertProveedor(
+        $objCtrBodega = new BodegaController();
+        $objCtrBodega->setInsertBodega(
           $_POST['txtNombre'],
-          $_POST['txtDireccion'],
-          $_POST['txtAgente'],
-          $_POST['txtTelefono']
+          $_POST['txtSeccion'],
+          $_POST['txtUbicacion']
         );
       }
       ?>

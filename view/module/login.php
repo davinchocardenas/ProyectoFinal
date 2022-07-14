@@ -1,61 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Login</title>
-        <link rel="stylesheet" href="view/css/login.css">
-        <link rel="stylesheet" href="view/css/sweetalert2.min.css">
-        <script src="view/js/sweetalert2.all.min.js"></script>
-    </head>
-    <body>
-        <div id="login-button">
-            <img src="view/img/login-w-icon.png">
-            </img>
-            </div>
-            <div id="container">
-            <h1>Log In</h1>
-            <span class="close-btn">
-                <img src="view/img/circle_close_delete_-128.png"></img>
-            </span>
+	<!doctype html>
+	<html lang="en">
+	<head>
+		<title>Login 10</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-            <form method="post">
-                <input type="text" name="txtUser" placeholder="User">
-                <input type="password" name="pass" placeholder="Password">
-                <input type="submit" value="Log in">
-            </form>
-            <?php
-                if (isset($_POST['txtUser'])){
+		<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
 
-                    $user = $_POST['txtUser'];
-                    $pass = $_POST['pass'];
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		
+		<link rel="stylesheet" href="view/css/estilo.css">
+		<link rel="stylesheet" href="view/css/rellenar.css">
 
-                    try {
-                        $objCtl = new UserController();
-                        $objCtl -> getVerifyPass($user,$pass);
-                    } catch (Exception $e) {                        
+		</head>
+		<body class="repet" style="background-image: url(view/img/bg.jpg);"> 
+		<section class="ftco-section">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-md-6 text-center mb-5">
+						<h2 class="heading-section">Login</h2>
+					</div>
+				</div>
+				<div class="row justify-content-center">
+					<div class="col-md-6 col-lg-4">
+						<div class="login-wrap p-0">
+					<form method="post" class="signin-form">
+						<div class="form-group">
+							<input type="text" class="form-control" name="TXTcc" placeholder="usuario" required>
+						</div>
+					<div class="form-group">
+					<input id="password-field" type="password" class="form-control"  name= "contrasena" placeholder="contraseña" required>
+					<span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+					</div>
+					<div class="form-group">
+						<button type="submit" class="form-control btn btn-primary submit px-3" value="Log in">ingresar</button>
+						</div>
+					</div>
+				</form>
 
-                    }
 
-                }
-            ?>
-            </div>
 
-            <!-- Forgotten Password Container -->
-            <div id="forgotten-container">
-            <h1>Forgotten</h1>
-            <span class="close-btn">
-                <img src="https://cdn4.iconfinder.com/data/icons/miu/22/circle_close_delete_-128.png"></img>
-            </span>
+	
+	</div>
+				</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	<?php
 
-            <form>
-                <input type="email" name="email" placeholder="E-mail">
-                <a href="#" class="orange-btn">Get new password</a>
-            </form>
-        </div>
-        <script src="view/js/jquery-3.6.0.min.js"></script>
-        <script src="view/js/TweenMax.min.js"></script>
-        <script src="view/js/login.js"></script>
-    </body>
-</html>
+	if(isset($_POST["TXTcc"])){
+
+		$cc = $_POST["TXTcc"];
+		$contrasena = $_POST["contrasena"];
+
+		try {
+		
+		$objctr = new UserController();
+		$objctr -> getVerifycc($cc,$contrasena);
+		
+		} catch (Exception $e) {
+			print "Error de conexion ". $e -> getMessage();
+		}
+	}
+?>
+
+		<script src="view/js/jquery.min.js"></script>
+	<script src="view/js/popper.js"></script>
+	<script src="view/js/bootstrap.min.js"></script>
+	
+
+		</body>
+	</html>
+

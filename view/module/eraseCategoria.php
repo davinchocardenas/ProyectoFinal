@@ -1,12 +1,12 @@
 <?php
 //echo "llego";
-eraseProveedor();
-function eraseProveedor(){
+eraseCategoria();
+function eraseCategoria(){
     try {
-        $objDtoProveedor = new Proveedor();
-        $objDtoProveedor -> setId_Proveedor($_GET['id_Proveedor']);
-        $objDaoProveedor = new ProveedorModel($objDtoProveedor);
-        if ( $objDaoProveedor -> mldEraseProveedor() == true ) {
+        $objDtoCategoria = new Categoria();
+        $objDtoCategoria -> setId_Categoria($_GET['id_Categoria']);
+        $objDaoCategoria = new CategoriaModel($objDtoCategoria);
+        if ( $objDaoCategoria -> mldEraseCategoria() == true ) {
 
             echo "<script>
                     Swal.fire(
@@ -15,7 +15,7 @@ function eraseProveedor(){
                         'success'
                     )
                 </script>";
-                include_once 'view/module/verproveedor.php'; 
+                include_once 'view/module/categoria.php'; 
         }
 
     } catch ( PDOException $e ) {
@@ -27,6 +27,4 @@ function eraseProveedor(){
 }
 
 ?>
-
-
 
