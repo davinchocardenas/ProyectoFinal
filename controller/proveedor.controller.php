@@ -39,6 +39,18 @@ class ProveedorController
         }
         return $respon;
     } //FIN DE MOSTRAR TODOS
+    public function getSearchDDLProveedor(){
+        $respon = false;
+        try{
+            $objDtoProveedor = new Proveedor();
+            $objDaoProveedor = new ProveedorModel($objDtoProveedor);
+            $respon = $objDaoProveedor->mldSearchDDLProveedor()->fetchAll();
+        } catch (PDOException $e){
+            echo "Error on the creation of the 
+               controller of show all" . $e->getMessage();
+        }
+        return $respon;
+    }
     public function setUpdateProveedor($id_Proveedor, $nombre, $direccion, $agente, $telefono)
     {
         try {
@@ -62,4 +74,5 @@ class ProveedorController
             echo 'Error al modificara' . $e->getMessage();
         }
     } //END UPDATE
+
 }
