@@ -43,6 +43,22 @@ class ProveedorModel{
         }//end try-catch
         return $respon;
     }//END SearchProveedor
+
+    public function mldSearchDDLProveedor(){
+
+        $sql  = "call SpSearchDDLProveedor()";
+        try {
+            $objCon = new Conexion();
+            $stmt = $objCon->getConect() -> prepare($sql);
+            $stmt -> execute();
+            $objretornadoproveedor = $stmt;
+        } catch (PDOException $e) {
+            echo "Ha ocurrido un error al 
+            mostrar los datos en el dao " . $e -> getMessage() ;
+        }
+        return $objretornadoproveedor;
+    }
+
     public function mldEraseProveedor(){
         $respon = false;
         $sql  = "call SpDeleteProveedor( ? )";

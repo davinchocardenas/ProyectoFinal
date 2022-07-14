@@ -11,7 +11,7 @@
         //construct
         public function __construct(){
             $this -> host = "localhost" ;
-            $this -> drive = "mysql";  
+            $this -> drive =  "mysql";  
             $this -> base = "proyecto";
             $this -> user = "root";
             $this -> pass = "";
