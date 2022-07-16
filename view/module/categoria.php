@@ -28,7 +28,7 @@
             <i class="fa fa-times"></i></button>
         </div>
       </div>
-      <form method="post" id="frmProveedor">
+      <form method="post" id="frmCategoria">
         <div class="box-body">
           <div class="row">
             <div class="col-lg-6 col-xs-6">
@@ -42,6 +42,7 @@
             <!-- ./col -->
           </div>
           <br>
+          
         </div>
         <!-- /.box-body -->
         <div class="box-footer">

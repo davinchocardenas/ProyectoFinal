@@ -32,6 +32,7 @@
                   <th class="text-center">Id_Producto</th>
                   <th class="text-center">Id_Proveedor</th>
                   <th class="text-center">Id_Bodega</th>
+                  <th class="text-center">Id_Categoria</th>
                   <th class="text-center">Fecha</th>
                   <th class="text-center">Cantidad</th>
                  
@@ -42,35 +43,39 @@
                   <?php
                     $objCtrlEntrada = new EntradaController();
                     if (gettype($objCtrlEntrada -> getSearchAllEntrada()) == "boolean"){
-                    print '    
-                    <td colspan="5">no hay datos por mostrar</td>';
+                    print '   
+                      <tr>
+                        <td colspan="5">no hay datos por mostrar</td>
+                      </tr>';
                     }else{
 
-                      foreach($objCtrlEntrada -> getSearchEntrada() as $key => $value){
+                      foreach($objCtrlEntrada -> getSearchAllEntrada() as $key => $value){
                         print '    
-                          <tr>
-                           <td class="text-center">
-                           <button class="btn btn-social-icon bg-yellow" onclick="getDataEntrada(this.parentElement.parentElement)" data-toggle="modal" data-target="#myModal">
-                              <i class="fa fa-edit"></i>
-                            </button>
-                            <button class="btn btn-social-icon btn-google"  onClick="eraseEntrada(this.parentElement.parentElement)">
-                              <i class="fa fa-trash"></i>
-                            </button>
-                            <td>'.$value['Id_Registro'].'</td>
-                            <td>'.$value['Id_Producto'].'</td>
-                            <td>'.$value['Id_Proveedor'].'</td>
-                            <td>'.$value['Id_Bodega'].'</td>
-                            <td>'.$value['Fecha'].'</td>
-                            <td>'.$value['Cantidad'].'</td>
-                          </td>
+                          <tr>   
+                            <td class="text-center">
+                              <button class="btn btn-social-icon bg-yellow" onclick="getDataEntrada(this.parentElement.parentElement)" data-toggle="modal" data-target="#myModal">
+                                <i class="fa fa-edit"></i>
+                              </button>
+                              <button class="btn btn-social-icon btn-google"  onClick="eraseEntrada(this.parentElement.parentElement)">
+                                <i class="fa fa-trash"></i>
+                              </button>
+                            </td>
+                              <td>'.$value["Id_Registro"].'</td>
+                              <td>'.$value["Id_Producto"].'</td>
+                              <td>'.$value["Id_Proveedor"].'</td>
+                              <td>'.$value["Id_Bodega"].'</td>
+                              <td>'.$value["Id_Categoria"].'</td>
+                              <td>'.$value["Fecha"].'</td>
+                              <td>'.$value["Cantidad"].'</td>
+                            </td>
                           </tr>
                           ';
-                      }
+                      }//FIN FOREACH
                     
-                    }
-                    
+                    }//FIN IF
+                   
                   ?>
-              </form>
+                </form>
               </tbody>
             </table>
           </div>
@@ -126,17 +131,37 @@
         <!-- Modal body -->
         <div class="modal-body">
         
-        <form method="post" id="formEntradaModificar">
-          <input type="hidden" name="txtId_Registro" id="txtId_Registro">
+        <form method="post" id="frmEntrada">
+          <input type="hidden" name="txtId_RegistroM" id="txtId_RegistroM">
               <div class="box-body">
                   <!-- Small boxes (Stat box) -->
                   <div class="row">
                       <div class="col-lg-6 col-xs-6">
                       <!-- small box -->
                       <div class="input-group">
-                          <span class="input-group-addon">Id_Producto</span>
-                          <input type="text" class="form-control" id="txtId_ProductoM" name="txtId_ProductoM">
-                          <span class="input-group-addon"></span>
+
+                          <span class="input-group-addon">Id_Producto</i></span>
+                            <select class="form-control" id="txtIdProducto_M" name="txtIdProducto_M">
+                            <option value="" selected disabled hidden></option>
+                        <?php
+
+                        $objCtrProductoDDL = new ProductoController();
+                        if (gettype($objCtrProductoDDL->getSearchDDLProducto()) == 'boolean') {
+                            echo '
+                            <tr>
+                                <td colspan="5">no hay datos que mostrar</td>
+                            </tr>';
+                            } else {
+                            
+                                foreach ($objCtrProductoDDL->getSearchDDLProducto() as $key => $value) {
+
+                                echo"<option value=". $value["Id_Producto"].">". $value["Descripcion"]."</option> ";
+                                }
+                            }
+
+                        ?>
+                            </select>
+                          
                       </div>
 
                       </div>
@@ -144,9 +169,29 @@
                       <div class="col-lg-6 col-xs-6">
                       <!-- small box -->
                       <div class="input-group">
+                             
+                          
                           <span class="input-group-addon">Id_Proveedor</span>
-                          <input type="text" class="form-control" id="txtId_ProveedorM" name="txtId_ProveedorM">
-                          <span class="input-group-addon"></span>
+                            <select class="form-control" id="txtId_ProveedorM" name="txtId_ProveedorM">
+                            <option value="" selected disabled hidden></option>
+                            <?php
+
+                            $objCtrProveedorDDL = new ProveedorController();
+                            if (gettype($objCtrProveedorDDL->getSearchDDLProveedor()) == 'boolean') {
+                            echo '
+                            <tr>
+                            <td colspan="5">no hay datos que mostrar</td>
+                            </tr>';
+                            } else {
+    
+                                foreach ($objCtrProveedorDDL->getSearchDDLProveedor() as $key => $value) {
+
+                                echo"<option value=". $value["Id_Proveedor"].">". $value["Nombre"]."</option> ";
+                                }
+                            }
+
+                        ?>
+                            </select>
                       </div>
 
                       </div>
@@ -162,9 +207,9 @@
                       <div class="col-lg-6 col-xs-6">
                       <!-- small box -->
                       <div class="input-group">
-                          <span class="input-group-addon">Cantidad</i></span>
+                      <span class="input-group-addon">Cantidad</span>
                           <input type="text" class="form-control" id="txtCantidadM" name="txtCantidadM">
-                          <span class="input-group-addon"></span>
+                          <span class="input-group-addon"><i class="fa fa-ambulance"></i></span>
                       </div>
 
                       </div>
@@ -172,9 +217,27 @@
                       <div class="col-lg-6 col-xs-6">
                       <!-- small box -->
                       <div class="input-group">
-                          <span class="input-group-addon">Id_Bodega</i></span>
-                          <input type="text" class="form-control" id="txtId_BodegaM" name="txtId_BodegaM">
-                          <span class="input-group-addon"></span>
+                      <span class="input-group-addon">Id_Bodega</i></span>
+                            <select class="form-control" id="txt_IdBodegaM" name="txt_IdBodegaM">
+                            <option value="" selected disabled hidden></option>
+                            <?php
+
+                            $objCtrBodegaDDL = new BodegaController();
+                            if (gettype($objCtrBodegaDDL->getSearchDDLBodega()) == 'boolean') {
+                            echo '
+                            <tr>
+                            <td colspan="5">no hay datos que mostrar</td>
+                            </tr>';
+                            } else {
+
+                            foreach ($objCtrBodegaDDL->getSearchDDLBodega() as $key => $value) {
+
+                            echo"<option value=". $value["Id_Bodega"].">". $value["Seccion"]."</option> ";
+                            }
+                            }
+
+                            ?>
+                            </select>
                       </div>
                       </div>
                       
@@ -187,17 +250,54 @@
                       <div class="col-lg-6 col-xs-6">
                       <!-- small box -->
                       <div class="input-group">
-                          <span class="input-group-addon">Fecha</i></span>
-                          <input type="text" class="form-control" id="txtFechaM" name="txtFechaM">
-                          <span class="input-group-addon"></span>
+                   <span class="input-group-addon">Id_Categoria</i></span>
+                          <select class="form-control" id="Id_CategoriaM" name="Id_CategoriaM">
+                        <option value="" selected disabled hidden></option>
+                        <?php
+
+                            $objCtrCategoriaDDL = new CategoriaController();
+                                  if (gettype($objCtrCategoriaDDL->getSearchDDLCategoria()) == 'boolean') {
+                                    echo '
+                                    <tr>
+                                    <td colspan="5">no hay datos que mostrar</td>
+                                    </tr>';
+                                    } else {
+
+                                  foreach ($objCtrCategoriaDDL->getSearchDDLCategoria() as $key => $value) {
+
+                                   echo"<option value=". $value["Id_Categoria"].">". $value["Nombre"]."</option> ";
+                                            }
+                             }
+
+                         ?></select>
                       </div>
+
                       </div>
                       <!-- ./col -->
                       <div class="col-lg-6 col-xs-6">
+                      <!-- small box -->
+                      <div class="input-group">
+
+                      <span class="input-group-addon">fecha</i></span>
+                          <input type="text" class="form-control" id="txtFechaM" name="txtFechaM">
+                          <span class="input-group-addon"><i class="fa fa-ambulance"></i></span>
                       </div>
                       </div>
+                      
+                      <div class="col-lg-6 col-xs-6">
+                      
+                      </div>
+                      
                   </div>
-                  <!-- /.row -->      
+                  
+                      </select>
+                      <div class="col-lg-6 col-xs-6">
+                      
+                      </div>
+                  <!-- /.row -->
+                
+                
+                  
           </form>
         </div>
         <!-- Modal footer -->
@@ -212,11 +312,12 @@
             
                       $objCtrlEntrada = new EntradaController();
                       $objCtrlEntrada -> setUpdateEntrada(
+                        $_POST["txtCantidadM"],
+                        $_POST["txtFechaM"],
                         $_POST["txtId_ProductoM"],
                         $_POST["txtId_ProveedorM"],
-                        $_POST["txtId_BodegaM"],
-                        $_POST["txtFechaM"],
-                        $_POST["txtCantidadM"]
+                        $_POST["txtId_CategoriaM"],
+                        $_POST["txtId_BodegaM"]
                       );
                       echo "<script>location.href = 'http://localhost/ProyectoFinal/verentrada';</script>";
 

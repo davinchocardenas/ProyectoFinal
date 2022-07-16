@@ -250,6 +250,46 @@ function eraseEntrada(obj){
     })
 }
 
+function eraseSalida(obj){
+  
+  id_Salida = obj.children[0].innerHTML;
+  
+
+  const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+    
+    swalWithBootstrapButtons.fire({
+      title: '¿estas seguro?',
+      text: "no podras deshacer este cambio",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'si, borralo',
+      cancelButtonText: 'no,cancelar',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        window.location="index.php?ruta=eraseSalida&id_Salida="+ id_Salida;
+
+       
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'cancelado',
+          'tu registro esta intacto',
+          'error'
+        )
+      }
+    })
+}
+
 function getData(obj){
   
   let codigo = obj.children[0].innerHTML;
@@ -322,19 +362,42 @@ function getDataProducto(obj) {
 
 function getDataEntrada(obj){
   
+  let id_Registro = obj.children[0].innerHTML;
+  let id_Producto = obj.children[3].innerHTML;
+  let id_Proveedor = obj.children[4].innerHTML;
+  let cantidad= obj.children[1].innerHTML;
+  let id_Bodega = obj.children[6].innerHTML;
+  let id_Categoria = obj.children[5].innerHTML;
+  let fecha = obj.children[2].innerHTML;
+
+  document.getElementById("txt_RegistroM").value= id_Registro;
+  document.getElementById("txtId_ProductoM").value = id_Producto;
+  document.getElementById("txtId_ProveedorM").value = id_Proveedor;
+  document.getElementById("txtCantidadM").value = cantidad;
+  document.getElementById("txt_BodegaM").value= id_Bodega;
+  document.getElementById("txt_CategoriaM").value= id_Categoria;
+  document.getElementById("txtFechaM").value= fecha;
+
+
+}
+
+function getDataSalida(obj){
+  
   let id_Producto = obj.children[1].innerHTML;
   let id_Proveedor = obj.children[2].innerHTML;
   let id_Bodega = obj.children[3].innerHTML;
-  let fecha = obj.children[4].innerHTML;
-  let cantidad= obj.children[5].innerHTML;
-  let id_Registro = obj.children[0].innerHTML;
+  let id_Categoria = obj.children[4].innerHTML;
+  let fecha = obj.children[5].innerHTML;
+  let cantidad= obj.children[6].innerHTML;
+  let id_Salida = obj.children[0].innerHTML;
 
   document.getElementById("txtId_ProductoM").value = id_Producto;
   document.getElementById("txtId_ProveedorM").value = id_Proveedor;
   document.getElementById("txtBodegaM").value= id_Bodega;
+  document.getElementById("txtCategoriaM").value= id_Categoria;
   document.getElementById("txtFechaM").value= fecha;
   document.getElementById("txtCantidadM").value = cantidad;
-  document.getElementById("txtId_RegistroM").value= id_Registro;
+  document.getElementById("txtId_SalidaM").value= id_Salida;
 
 
 }

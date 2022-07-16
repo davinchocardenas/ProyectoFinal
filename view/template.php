@@ -30,6 +30,14 @@
             include_once 'view/module/eraseProducto.php';
             break;
 
+        case 'eraseEntrada':
+            include_once 'view/module/eraseEntrada.php';
+            break;
+
+        case 'eraseSalida':
+            include_once 'view/module/eraseSalida.php';
+            break;
+
         case 'proveedor':
           include_once "view/module/proveedor.php";
           break;
@@ -72,6 +80,14 @@
 
         case 'registro':
             include_once 'view/module/registro.php';
+            break;
+
+        case 'salida':
+            include_once 'view/module/salida.php';
+            break;
+    
+        case 'versalida':
+            include_once 'view/module/versalida.php';
             break;
 
         default:

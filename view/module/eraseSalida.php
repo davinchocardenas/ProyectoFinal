@@ -1,13 +1,13 @@
 <?php
     
-    eraseEntrada();
-     function eraseEntrada(){
+    eraseSalida();
+     function eraseSalida(){
         try {
-            $objDtoEntrada = new Entrada();
-            $objDtoEntrada -> setId_Registro($_GET["id_Registro"]);
-            $objDaoEntrada = new EntradaModel($objDtoEntrada);
+            $objDtoSalida = new Salida();
+            $objDtoSalida -> setId_Salida($_GET["id_Salida"]);
+            $objDaoSalida = new SalidaModel($objDtoSalida);
 
-            if ($objDaoEntrada -> mldEraseEntrada() == true) {
+            if ($objDaoSalida -> mldEraseSalida() == true) {
                 
                 print "<script>
                 
@@ -20,7 +20,7 @@
                 
                 </script>";
 
-                include_once "view/module/verentrada.php";
+                include_once "view/module/versalida.php";
             }
         } catch (Exeption $e) {
             print "hubo un error al borrar ".$e ->getMesagge;

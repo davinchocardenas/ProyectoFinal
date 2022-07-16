@@ -148,6 +148,30 @@
           </li>
           </ul> 
   </section>
+  <section class="sidebar">
+        <ul class="sidebar-menu" data-widget="tree">
+          <li class="">
+          <li class="active treeview">
+            <a href="#">
+              <i class="fa fa-dashboard"></i> <span>salida</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+            <li class="">
+            <a href="salida">
+              <i class="fa fa-user"></i>
+              <span>crear</span>
+            </a>
+            <li class="">
+            <a href="versalida">
+              <i class="fa fa-user"></i>
+              <span>ver salidas</span>
+            </a>
+          </li>
+          </ul> 
+  </section>
       <!-- /.sidebar -->
     </aside>
     <div id="ohsnap"></div>

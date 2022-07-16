@@ -59,6 +59,7 @@
 <script src="view/js/validatecategoria.js"></script>
 <script src="view/js/validateproducto.js"></script>
 <script src="view/js/validateentrada.js"></script>
+<script src="view/js/validatesalida.js"></script>
 <script src="view/js/creud.js"></script>
 <script src="view/js/ohsnap.js"></script>
 

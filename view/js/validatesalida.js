@@ -1,6 +1,6 @@
-function validateentrada(e){
+function validatesalida(e){
     e.preventDefault();
-    formulario   = document.getElementById("frmEntrada");
+    formulario   = document.getElementById("frmSalida");
     id_Producto  = document.getElementById("txtId_Producto");
     id_Proveedor = document.getElementById("txtId_Proveedor");
     id_Bodega    = document.getElementById("txtId_Bodega");
@@ -50,9 +50,9 @@ function validateentrada(e){
         formulario.submit();
     }
 }
-function validateModifyentrada(e){
+function validateModifysalida(e){
     e.preventDefault();
-    formulario   = document.getElementById("frmEntradaM");
+    formulario   = document.getElementById("frmSalidaM");
     cantidad     = document.getElementById("txtCantidadM");
     fecha        = document.getElementById("txtFechaM");
     id_Producto  = document.getElementById("txtId_ProductoM");
@@ -89,7 +89,7 @@ function validateModifyentrada(e){
         ohSnap('campo de Id_Categoria vacio', {color: 'red'});  // alert will have class 'alert-color
         lvali = false;
     }
-
+    
     if(id_Bodega.value==""){
         id_Bodega.style.borderColor="red";
         ohSnap('campo de Id_Bodega vacio', {color: 'red'});  // alert will have class 'alert-color
@@ -99,7 +99,7 @@ function validateModifyentrada(e){
 
     
 
-``
+
     if(lvali == true ){
         formulario.submit();
     }

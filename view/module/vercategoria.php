@@ -17,7 +17,7 @@
     <section class="content">
 
     <!-- Default box -->
-    <div class="box">
+      <div class="box">
       <div class="box-header with-border">
         <h3 class="box-title"></h3>
 
@@ -29,12 +29,12 @@
         </div>
       </div>
       <div class="box-body">
-        <table id="categoria" class="table table-dark table-striped table-hover">
+        <table id="users" class="table table-dark table-striped table-hover">
           <thead>
             <tr>
-              <th class="text-center">Acciones</th>
               <th class="text-center">Id_Categoria</th>
               <th class="text-center">Nombre</th>
+              <th class="text-center">Acciones</th>
             </tr>
           </thead>
           <tbody>
@@ -42,14 +42,14 @@
               <?php
               $objCtrCategoria = new CategoriaController();
               if (gettype($objCtrCategoria->getSearchAllCategoria()) == 'boolean') {
-                print '
+                echo '
                     <tr>
                       <td colspan="5">no hay datos que mostrar</td>
                     </tr>';
               } else {
 
                 foreach ($objCtrCategoria->getSearchAllCategoria() as $key => $value) {
-                  print '
+                  echo '
                       <tr>
                       <td>' . $value["Id_Categoria"] . '</td>
                         <td>' . $value["Nombre"] . '</td>
@@ -88,14 +88,14 @@
 
       <!-- Modal Header -->
       <div class="modal-header bg bg-info">
-        <h4 class="modal-title">Modificar Categoria</h4>
+        <h4 class="modal-title">Modificar Catergoria</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 
       <!-- Modal body -->
       <div class="modal-body">
         <form method="post" id="frmCategoriaModificar">
-          <input type="hidden" name="txtId_CategoriaM" id="txtId_CategoriaM">
+        <input type="hidden" name="txtId_CategoriaM" id="txtId_CategoriaM">
           <div class="box-body">
             <div class="row">
               <div class="col-lg-6 col-xs-6">
@@ -106,6 +106,10 @@
                   <span class="input-group-addon">N</span>
                 </div>
               </div>
+              <!-- ./col -->
+
+            </div>
+            <br>
           </div>
           <!-- /.box-body -->
 
@@ -119,14 +123,18 @@
           <button class="btn btn-app float-left" onclick="validateModifycategoria(event)">
             <i class="fa fa-save"></i>Guardar
           </button>
+
           <?php
-          if (isset($_POST['txtNombreM'])) {
+          if (isset($_POST['txtId_CategoriaM'])) {
+            
             $objCtrCategoria = new CategoriaController();
             $objCtrCategoria->setUpdateCategoria(
               $_POST['txtId_CategoriaM'],
-              $_POST['txtNombreM']
+              $_POST['txtNombreM'],
+              
             );
-            // include_once 'view/module/categoria.php';
+
+            // include_once 'view/module/producto.php';
             echo "<script>location.href = 'http://localhost/ProyectoFinal/vercategoria';</script>";
           }
           ?>
