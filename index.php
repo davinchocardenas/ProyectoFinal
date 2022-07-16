@@ -8,6 +8,7 @@
     require_once "controller/template.controller.php";
     require_once "controller/producto.controller.php";
     require_once "controller/entrada.controller.php";
+    require_once "controller/salida.controller.php";
     ////MODELS///////
 
     require_once "model/dao/usuario.dao.php";
@@ -27,6 +28,9 @@
 
     require_once "model/dao/entrada.dao.php";
     require_once "model/dto/entrada.dto.php";
+
+    require_once "model/dao/salida.dao.php";
+    require_once "model/dto/salida.dto.php";
 
 
     ////// CONEXION /////
