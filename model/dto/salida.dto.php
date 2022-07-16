@@ -1,8 +1,8 @@
 <?php
 
-    class Entrada{
+    class Salida{
 
-        private $id_Registro;
+        private $id_Salida;
         private $id_Producto;
         private $id_Proveedor;
         private $id_Bodega;
@@ -10,8 +10,8 @@
         private $fecha;
         private $cantidad;
 
-        public function getId_Registro(){
-            return $this -> id_Registro;
+        public function getId_Salida(){
+            return $this -> id_Salida;
         }
 
         public function getId_Producto(){
@@ -37,8 +37,8 @@
             return $this -> cantidad;
         }
 
-        public function setId_Registro($id_Registro){
-            $this-> id_Registro = $id_Registro;
+        public function setId_Salida($id_Salida){
+            $this-> id_Salida = $id_Salida;
         }
 
         public function setId_Producto($id_Producto){

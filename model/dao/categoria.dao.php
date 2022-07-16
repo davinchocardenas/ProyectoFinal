@@ -52,6 +52,21 @@ class CategoriaModel{
         return $respon;
     }//END SearchCategoria
 
+    public function mldSearchDDLCategoria(){
+
+        $sql = "call SpSearchDDLCategoria()";
+        try {
+            $objCon = new Conexion();
+            $stmt = $objCon -> getConect() -> prepare($sql);
+            $stmt -> execute();
+            $objretornadocategoria = $stmt;
+
+        } catch (PDOException $e) {
+            echo "Ha ocurrido un error al mostrar los datos en el dao" . $e -> getMessage();
+        }
+        return $objretornadocategoria;
+    }
+
     public function mldEraseCategoria(){
         $respon = false;
         $sql  = "call SpDeleteCategoria( ? )";

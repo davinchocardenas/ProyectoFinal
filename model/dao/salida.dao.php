@@ -1,7 +1,7 @@
 <?php
-    class EntradaModel{
+    class SalidaModel{
 
-        private $id_Registro;
+        private $id_Salida;
         private $id_Producto;
         private $id_Proveedor;
         private $id_Bodega;
@@ -9,19 +9,19 @@
         private $cantidad;
         private $fecha;
 
-        public function __construct($objDtoEntrada){
-           $this-> id_Registro    = $objDtoEntrada -> getId_Registro();
-           $this-> id_Producto    = $objDtoEntrada -> getId_Producto();
-           $this-> id_Proveedor   = $objDtoEntrada -> getId_Proveedor();
-           $this-> id_Bodega      = $objDtoEntrada -> getId_Bodega();
-           $this-> id_Categoria   = $objDtoEntrada ->  getId_Categoria();
-           $this-> fecha          = $objDtoEntrada -> getFecha();
-           $this-> cantidad       = $objDtoEntrada -> getCantidad();
+        public function __construct($objDtoSalida){
+           $this-> id_Salida    = $objDtoSalida -> getId_Salida();
+           $this-> id_Producto    = $objDtoSalida -> getId_Producto();
+           $this-> id_Proveedor   = $objDtoSalida -> getId_Proveedor();
+           $this-> id_Bodega      = $objDtoSalida -> getId_Bodega();
+           $this-> id_Categoria   = $objDtoSalida ->  getId_Categoria();
+           $this-> fecha          = $objDtoSalida -> getFecha();
+           $this-> cantidad       = $objDtoSalida -> getCantidad();
 
         }
 
-        public function mldInsertEntrada( ){
-            $sql = "CALL `SpInsertEntrada`(?, ?, ?, ?, ?, ?);";  
+        public function mldInsertSalida( ){
+            $sql = "CALL `SpInsertSalida`(?, ?, ?, ?, ?, ?);";  
             $estado = false;
 
             try {
@@ -36,15 +36,15 @@
                 $estado = $stmt -> execute();
                 
             } catch (PDOexepcion $e) {
-                print "error al insertar entrada";
+                print "error al insertar salida";
 
         }
         return $estado;
     }
 
-    public function mldSearchEntrada(){
+    public function mldSearchSalida(){
         $respon=false;
-        $sql = "call SpSearchEntrada()";
+        $sql = "call SpSearchSalida()";
 
         try {
             $objcon = new Conexion();
@@ -59,8 +59,8 @@
         return $respon;
     }
 
-    public function mldSearchAllEntrada(){
-        $sql = "call spSearchAllEntrada()";
+    public function mldSearchAllSalida(){
+        $sql = "call spSearchAllSalida()";
 
         try {
             $objcon = new Conexion();
@@ -75,31 +75,30 @@
         return $respon;
     }
 
-    public function mldEraseEntrada(){
-        $sql ="call SpDeleteEntrada(?)";
-
+    public function mldEraseSalida(){
         $respon = false;
+        $sql ="call SpDeleteSalida(?)";
         try {
             $objcon = new Conexion();
             $stmt = $objcon -> getConect() -> prepare($sql); 
-            $stmt -> bindParam(1, $this -> id_Registro,        PDO::PARAM_INT);
+            $stmt -> bindParam(1, $this -> id_Salida,        PDO::PARAM_INT);
             $stmt -> execute();
             $respon = true;
             
         } catch (PDOExeption $e) {
-            print "hubo un error al borrar el registro ". $e -> getMessage();
+            print "hubo un error al borrar la salida ". $e -> getMessage();
         }
         return $respon;
 
     }
-    public function mldUpdateEntrada(){
-        $sql = "CALL SpUpdateEntrada(?, ?, ?, ?, ?, ?);";
+    public function mldUpdateSalida(){
+        $sql = "CALL SpUpdateSalida(?, ?, ?, ?, ?, ?);";
              $estado = false;
 
         try {
             $objcon = new Conexion();
             $stmt = $objcon -> getConect() -> prepare($sql); 
-            $stmt -> bindParam(1, $this -> id_Registro,     PDO::PARAM_STR);
+            $stmt -> bindParam(1, $this -> id_Salida,     PDO::PARAM_STR);
             $stmt -> bindParam(2, $this -> id_Producto,     PDO::PARAM_STR);
             $stmt -> bindParam(3, $this -> id_Proveedor,    PDO::PARAM_STR);
             $stmt -> bindParam(4, $this -> id_Bodega,       PDO::PARAM_STR);
