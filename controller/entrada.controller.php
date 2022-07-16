@@ -1,19 +1,20 @@
 <?php
 
     class EntradaController{
-        public function setInsertEntrada($id_Producto,$id_Proveedor,$id_Bodega,$cantidad,$fecha){
+        public function setInsertEntrada($id_Producto,$id_Proveedor,$id_Bodega,$id_Categoria,$fecha,$cantidad){
             try {
                 $objDtoEntrada = new Entrada();
                 $objDtoEntrada -> setId_Producto($id_Producto);
                 $objDtoEntrada -> setId_Proveedor($id_Proveedor);
                 $objDtoEntrada -> setId_Bodega($id_Bodega);
+                $objDtoEntrada -> setId_Categoria($id_Categoria);
                 $objDtoEntrada -> setFecha($fecha);
                 $objDtoEntrada -> setCantidad($cantidad);  
 
 
                 $objDaoEntrada = new EntradaModel($objDtoEntrada);
 
-                if($objDaoEntrada -> mldInsertusuario()){
+                if($objDaoEntrada -> mldInsertEntrada()){
                     print "<script>alert('done')<script>";
                 }
 
@@ -49,13 +50,14 @@
             return $respon;
         }
 
-        public function setUpdateEntrada($id_Registro,$id_Producto,$id_Proveedor,$id_Bodega,$cantidad,$fecha){
+        public function setUpdateEntrada($id_Producto,$id_Proveedor,$id_Bodega,$cantidad,$fecha){
 
             try {
                 $objDtoEntrada = new Entrada();
                 $objDtoEntrada -> setId_Producto($id_Producto);
                 $objDtoEntrada -> setId_Proveedor($id_Proveedor);
                 $objDtoEntrada -> setId_Bodega($id_Bodega);
+                $objDtoEntrada -> setId_Categoria($id_Categoria);
                 $objDtoEntrada -> setFecha($fecha);
                 $objDtoEntrada -> setCantidad($cantidad);  
                 $objDaoEntrada = new EntradaModel($objDtoEntrada);

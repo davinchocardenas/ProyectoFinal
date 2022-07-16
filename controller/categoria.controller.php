@@ -37,6 +37,18 @@ class CategoriaController
         }
         return $respon;
     } //FIN DE MOSTRAR TODOS
+    public function getSearchDDLCategoria(){
+        $respon = false;
+        try {
+            $objDtoCategoria = new Categoria();
+            $objDaoCategoria = new CategoriaModel($objDtoCategoria);
+            $respon = $objDaoCategoria->mldSearchDDLCategoria()->fetchAll();
+        } catch (PDOException $e) {
+            echo "Error on the creation of the 
+                controller of show all " . $e->getMessage();
+        }
+        return $respon;
+    }
 
     public function setUpdateCategoria($id_Categoria, $nombre)
     {
