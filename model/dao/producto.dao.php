@@ -12,7 +12,7 @@ class ProductoModel{
         $this ->stock_Minimo    =  $objDtoProducto -> getStock_Minimo() ;
         
 
-    }
+    }//FIN CONSTRUCT 
 
     public function mldInsertProducto(){
         $sql  = "CALL SpInsertProducto (?, ?);";
@@ -25,9 +25,9 @@ class ProductoModel{
             $estado = $stmt -> execute();
         } catch (PDOException $e) {
             echo "Error al insertar producto " . $e ->getMessage();
-        }
+        }//end try-catch
         return $estado;
-    }
+    }//FIN LLAMADA DE INSERCION PRODUCTO
 
     public function mldSearchProducto(){
         $respon=false;
@@ -42,7 +42,7 @@ class ProductoModel{
             mostrar los datos en el dao " . $e -> getMessage() ;
         }//end try-catch
         return $respon;
-    }//END SearchProducto
+    }//FIN LLAMADO DE DATOS PRODUCTO 
 
     public function mldSearchAllProducto(){
         $sql = "call spSearchAllProducto()";
@@ -58,7 +58,7 @@ class ProductoModel{
             print "hubo un error en mostrar los datos ". $e -> getMessage();
         }
         return $respon;
-    }
+    }//FIN LLAMADO DE TODOS LOS DATOS PRODUCTO
 
     public function mldSearchDDLProducto(){
 
@@ -73,7 +73,7 @@ class ProductoModel{
             echo "Ha ocurrido un error al mostrar los datos en el dao" . $e -> getMessage();
         }
         return $objretornadoproducto;
-    }
+    }//FIN LLAMADO DE ID Y DESCRIPCION
 
     public function mldEraseProducto(){
         $respon = false;
@@ -89,7 +89,7 @@ class ProductoModel{
             mostrar los datos en el dao " . $e -> getMessage() ;
         }//end try-catch
         return $respon;
-    }
+    }//FIN LLAMADO DE BORRAR PRODUCTO
 
     public function mldUpdateProducto(){
 
@@ -107,6 +107,6 @@ class ProductoModel{
             echo "Error al modficar producto " . $e ->getMessage();
         }
         return $estado;
-    }
-}
+    }//FIN LLAMADO MODIFICAR PRODUCTO
+}//FIN CLASE
 ?>

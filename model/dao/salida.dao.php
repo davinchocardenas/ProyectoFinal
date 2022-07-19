@@ -18,7 +18,7 @@
            $this-> fecha          = $objDtoSalida -> getFecha();
            $this-> cantidad       = $objDtoSalida -> getCantidad();
 
-        }
+        }//FIN CONSTRUCT
 
         public function mldInsertSalida( ){
             $sql = "CALL `SpInsertSalida`(?, ?, ?, ?, ?, ?);";  
@@ -40,7 +40,7 @@
 
         }
         return $estado;
-    }
+    }//FIN LLAMADA DE INSERCION SALIDA
 
     public function mldSearchSalida(){
         $respon=false;
@@ -57,7 +57,7 @@
             print "hubo un error en mostrar los datos ". $e -> getMessage();
         }
         return $respon;
-    }
+    }//FIN LLAMADO DE LOS DATOS SALIDA
 
     public function mldSearchAllSalida(){
         $sql = "call spSearchAllSalida()";
@@ -73,7 +73,7 @@
             print "hubo un error en mostrar los datos ". $e -> getMessage();
         }
         return $respon;
-    }
+    }//FIN LLAMADO DE TODOS LOS DATOS SALIDA
 
     public function mldEraseSalida(){
         $respon = false;
@@ -90,7 +90,8 @@
         }
         return $respon;
 
-    }
+    }//FIN LLAMADO DE BORRAR SALIDA
+
     public function mldUpdateSalida(){
         $sql = "CALL SpUpdateSalida(?, ?, ?, ?, ?, ?);";
              $estado = false;
@@ -112,7 +113,7 @@
             print "hubo un error en mostrar los datos ". $e -> getMessage();
         }
         return $estado;
-    }
-}
+    }//FIN LLAMADO MODIFICAR SALIDA
+}//FIN CLASE
 
 ?>

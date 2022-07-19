@@ -10,6 +10,7 @@
         private $fecha;
         private $cantidad;
 
+        /*GETTERS*/
         public function getId_Registro(){
             return $this -> id_Registro;
         }
@@ -37,6 +38,7 @@
             return $this -> cantidad;
         }
 
+        /*SETTING */
         public function setId_Registro($id_Registro){
             $this-> id_Registro = $id_Registro;
         }

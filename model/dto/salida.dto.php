@@ -10,6 +10,7 @@
         private $fecha;
         private $cantidad;
 
+        /*GETTERS*/
         public function getId_Salida(){
             return $this -> id_Salida;
         }
@@ -37,6 +38,7 @@
             return $this -> cantidad;
         }
 
+        /*SETTING */
         public function setId_Salida($id_Salida){
             $this-> id_Salida = $id_Salida;
         }

@@ -11,7 +11,7 @@
         private $rol;
         private $contrasena;
         
-
+        /*GETTERS*/
         public function getcc(){
             return $this -> cc;
         }
@@ -47,6 +47,7 @@
             $this-> cc = $cc;
         }
 
+        /*SETTING */
         public function setnombre($nombre){
             $this-> nombre = $nombre;
         }

@@ -31,6 +31,6 @@
         public function setUbicacion( $ubicacion ){
             $this -> ubicacion = $ubicacion;
         }
-    }
+    }//FIN CLASE
 
 ?>

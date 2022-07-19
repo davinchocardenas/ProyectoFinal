@@ -22,7 +22,7 @@
            $this-> edad = $objDtoUser -> getedad();
            $this-> rol     = $objDtoUser -> getrol();
            $this-> contrasena = $objDtoUser -> getcontrasena();  
-        }
+        }//FIN CONSTRUCT
 
         public function getQueryLogin(){
 
@@ -44,7 +44,7 @@
             }
 
             return $result;
-        }
+        }//FIN LLAMADO LOGIN
 
         public function mldInsertusuario( ){
             $sql = "CALL `SpInsertUsuario`(?, ?, ?, ?, ?, ?, ? , ?);";
@@ -69,7 +69,7 @@
 
         }
         return $estado;
-    }
+    }//FIN LLAMADA DE INSERCION USUARIO
 
     public function mldSearchAllUsuario(){
         $sql = "call spSearchAllUsuario()";
@@ -85,7 +85,7 @@
             print "hubo un error en mostrar los datos ". $e -> getMessage();
         }
         return $respon;
-    }
+    }//FIN LLAMADO DE TODOS LOS DATOS USUARIO
 
     public function mldEraseusuario(){
         $sql ="call spDeleteUsuario(?)";
@@ -103,7 +103,8 @@
         }
         return $respon;
 
-    }
+    }//FIN LLAMADO DE BORRAR USUARIO
+
     public function mldUpdateUsuario(){
         $sql = "CALL `spUpdateUsuario`(?, ?, ?, ?, ?, ?, ? , ?);";
              $estado = false;
@@ -126,8 +127,8 @@
         } catch (PDOExepcion $e) {
             print "hubo un error en mostrar los datos ". $e -> getMessage();
     }
-    }
-}
+    }//FIN LLAMADO MODIFICAR USUARIO
+}//FIN CLASE
 
     
 

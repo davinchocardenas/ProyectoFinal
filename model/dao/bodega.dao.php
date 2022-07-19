@@ -10,7 +10,8 @@ class BodegaModel{
         $this ->nombre    =  $objDtoBodega -> getNombre() ;
         $this ->seccion   =  $objDtoBodega -> getSeccion() ;
         $this ->ubicacion =  $objDtoBodega -> getUbicacion() ;
-    }
+    } //FIN CONSTRUCT
+    
     public function mldInsertBodega(){
         $sql  = "CALL SpInsertBodega (?, ?, ?);";
         $estado = false;
@@ -23,9 +24,10 @@ class BodegaModel{
             $estado = $stmt -> execute();
         } catch (PDOException $e) {
             echo "Error al insertar bodega" . $e ->getMessage();
-        }
+        }//end try-catch
         return $estado;
-    }
+    } //FIN LLAMADA DE INSERCION BODEGA
+
     public function mldSearchBodega(){
         $respon=false;
         $sql  = "call SpSearchBodega()";
@@ -39,7 +41,7 @@ class BodegaModel{
             mostrar los datos en el dao " . $e -> getMessage() ;
         }//end try-catch
         return $respon;
-    }//END SearchBodega
+    }//FIN LLAMADO DE DATOS BODEGA
 
     public function mldSearchDDLBodega(){
         $sql = "call SpSearchDDLBodega()";
@@ -50,9 +52,9 @@ class BodegaModel{
             $objretornadobodega = $stmt;
         } catch (PDOException $e) {
             echo "Ha ocurrido un error al mostrar los datos en el dao " . $e -> getMessage();
-        }
+        }//end try-catch
         return $objretornadobodega;
-    }
+    }//FIN LLAMADO DE ID Y NOMBRE
 
     public function mldEraseBodega(){
         $respon = false;
@@ -68,7 +70,8 @@ class BodegaModel{
             mostrar los datos en el dao " . $e -> getMessage() ;
         }//end try-catch
         return $respon;
-    }
+    }//FIN LLAMADO DE BORRAR BODEGA 
+
     public function mldUpdateBodega(){
         $sql  = "CALL SpUpdateBodega (?, ?, ?, ?);";
         $estado = false;
@@ -85,7 +88,7 @@ class BodegaModel{
             echo "Error al modficar Bodega " . $e ->getMessage();
         }
         return $estado;
-    }
+    }//FIN LLAMADO DE MODIFICAR BODEGA
 
-}
+}//FIN CLASE
 ?>

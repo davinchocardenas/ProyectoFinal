@@ -12,7 +12,8 @@ class ProveedorModel{
         $this ->direccion    =  $objDtoProveedor -> getDireccion() ;
         $this ->agente       =  $objDtoProveedor -> getAgente() ;
         $this ->telefono     =  $objDtoProveedor -> getTelefono() ;
-    }
+    }//FIN CONSTRUCT
+
     public function mldInsertProveedor(){
         $sql  = "CALL SpInsertProveedor (?, ?, ?, ?);";
         $estado = false;
@@ -26,9 +27,10 @@ class ProveedorModel{
             $estado = $stmt -> execute();
         } catch (PDOException $e) {
             echo "Error al insertar proveedor " . $e ->getMessage();
-        }
+        }//end try-catch
         return $estado;
-    }
+    }//FIN LLAMADA DE INSERCION PROVEEDOR
+
     public function mldSearchProveedor(){
         $respon=false;
         $sql  = "call SpSearchProveedor()";
@@ -42,7 +44,7 @@ class ProveedorModel{
             mostrar los datos en el dao " . $e -> getMessage() ;
         }//end try-catch
         return $respon;
-    }//END SearchProveedor
+    }//FIN LLAMADO DE TODOS LOS DATOS PROVEEDOR
 
     public function mldSearchDDLProveedor(){
 
@@ -57,7 +59,7 @@ class ProveedorModel{
             mostrar los datos en el dao " . $e -> getMessage() ;
         }
         return $objretornadoproveedor;
-    }
+    }//FIN LLAMADO DE ID Y NOMBRE
 
     public function mldEraseProveedor(){
         $respon = false;
@@ -73,7 +75,8 @@ class ProveedorModel{
             mostrar los datos en el dao " . $e -> getMessage() ;
         }//end try-catch
         return $respon;
-    }
+    }//FIN LLAMADO DE BORRAR PROVEEDOR
+
     public function mldUpdateProveedor(){
         $sql  = "CALL SpUpdateProveedor (?, ?, ?, ?, ?);";
         $estado = false;
@@ -91,6 +94,6 @@ class ProveedorModel{
             echo "Error al modficar proveedor " . $e ->getMessage();
         }
         return $estado;
-    }
-}
+    }//FIN LLAMADO MODIFICAR PROVEEDOR
+}//FIN CLASE
 ?>

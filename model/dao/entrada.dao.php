@@ -18,7 +18,7 @@
            $this-> fecha          = $objDtoEntrada -> getFecha();
            $this-> cantidad       = $objDtoEntrada -> getCantidad();
 
-        }
+        }//FIN CONSTRUCT
 
         public function mldInsertEntrada( ){
             $sql = "CALL `SpInsertEntrada`(?, ?, ?, ?, ?, ?);";  
@@ -32,7 +32,7 @@
                 $stmt -> bindParam(3, $this -> id_Bodega,       PDO::PARAM_STR);
                 $stmt -> bindParam(4, $this -> id_Categoria,    PDO::PARAM_STR);
                 $stmt -> bindParam(5, $this -> fecha,           PDO::PARAM_STR);
-                $stmt -> bindParam(6, $this -> cantidad,        PDO::PARAM_STR);
+                $stmt -> bindParam(6, $this -> cantidad,        PDO::PARAM_INT);
                 $estado = $stmt -> execute();
                 
             } catch (PDOexepcion $e) {
@@ -40,7 +40,7 @@
 
         }
         return $estado;
-    }
+    }//FIN LLAMADA DE INSERCION ENTRADA
 
     public function mldSearchEntrada(){
         $respon=false;
@@ -57,7 +57,7 @@
             print "hubo un error en mostrar los datos ". $e -> getMessage();
         }
         return $respon;
-    }
+    }//FIN LLAMADO DE DATOS ENTRADA
 
     public function mldSearchAllEntrada(){
         $sql = "call spSearchAllEntrada()";
@@ -73,7 +73,7 @@
             print "hubo un error en mostrar los datos ". $e -> getMessage();
         }
         return $respon;
-    }
+    }//FIN LLAMADO DE TODOS LOS DATOS ENTRADA
 
     public function mldEraseEntrada(){
         $sql ="call SpDeleteEntrada(?)";
@@ -91,10 +91,11 @@
         }
         return $respon;
 
-    }
+    }//FIN LLAMADO DE BORRAR ENTRADA
+
     public function mldUpdateEntrada(){
-        $sql = "CALL SpUpdateEntrada(?, ?, ?, ?, ?, ?);";
-             $estado = false;
+        $sql = "CALL spUpdateEntrada(?, ?, ?, ?, ?, ?, ?);";
+        $estado = false;
 
         try {
             $objcon = new Conexion();
@@ -113,7 +114,7 @@
             print "hubo un error en mostrar los datos ". $e -> getMessage();
         }
         return $estado;
-    }
+    }//FIN LLAMADO MODIFICAR ENTRADA
 }
 
 ?>

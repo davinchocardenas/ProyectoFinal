@@ -6,7 +6,7 @@ class CategoriaModel{
     public function __construct($objDtoCategoria){
         $this ->id_Categoria =  $objDtoCategoria -> getId_Categoria() ;
         $this ->nombre       =  $objDtoCategoria -> getNombre() ;
-    }
+    }//FIN CONSTRUCT
     
     public function mldInsertCategoria(){
         $sql  = "CALL SpInsertCategoria (?);";
@@ -18,9 +18,9 @@ class CategoriaModel{
             $estado = $stmt -> execute();
         } catch (PDOException $e) {
             echo "Error al insertar la categoria " . $e ->getMessage();
-        }
+        }//end try-catch
         return $estado;
-    }
+    }//FIN LLAMADA DE INSERCION CATEGORIA
 
     public function mldSearchCategoria(){
         $respon=false;
@@ -35,7 +35,7 @@ class CategoriaModel{
             mostrar los datos en el dao " . $e -> getMessage() ;
         }//end try-catch
         return $respon;
-    }//END SearchCategoria
+    }//FIN LLAMADO DE DATOS CATEGORIA
 
     public function mldSearchAllCategoria(){
         $respon=false;
@@ -50,7 +50,7 @@ class CategoriaModel{
             mostrar los datos en el dao " . $e -> getMessage() ;
         }//end try-catch
         return $respon;
-    }//END SearchCategoria
+    }//FIN LLAMADO DE TODOS LOS DATOS CATEGORIA
 
     public function mldSearchDDLCategoria(){
 
@@ -63,9 +63,9 @@ class CategoriaModel{
 
         } catch (PDOException $e) {
             echo "Ha ocurrido un error al mostrar los datos en el dao" . $e -> getMessage();
-        }
+        }//end try-catch
         return $objretornadocategoria;
-    }
+    }//FIN LLAMADO DE ID Y NOMBRE
 
     public function mldEraseCategoria(){
         $respon = false;
@@ -81,7 +81,7 @@ class CategoriaModel{
             mostrar los datos en el dao " . $e -> getMessage() ;
         }//end try-catch
         return $respon;
-    }
+    }//FIN LLAMADO DE BORRAR CATEGORIA
 
     public function mldUpdateCategoria(){
         $sql  = "CALL SpUpdateCategoria (?, ?);";
@@ -97,6 +97,6 @@ class CategoriaModel{
             echo "Error al modificar caegoria " . $e ->getMessage();
         }
         return $estado;
-    }
-}
+    }//FIN LLAMADO MODIFICAR CATEGORIA 
+}//FIN CLASE
 ?>
