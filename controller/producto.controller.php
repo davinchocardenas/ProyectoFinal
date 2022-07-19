@@ -47,7 +47,7 @@ class ProductoController
                 controller of show all " . $e->getMessage();
         }
         return $respon;
-    }
+    }//FIN MOSTRAR ID Y DESCRIPCION
    
     public function setUpdateProducto($id_Producto, $descripcion, $stock_Minimo)
     {

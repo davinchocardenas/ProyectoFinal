@@ -48,7 +48,7 @@ class Bodegacontroller{
                 controller of show all" . $e->getMessage();
         }
         return $respon;
-    }
+    }//FIN MOSTRAR ID Y NOMBRE
 
     public function setUpdateBodega($id_Bodega, $nombre, $seccion, $ubicacion)
     {
@@ -71,7 +71,7 @@ class Bodegacontroller{
         } catch (PDOException $e) {
             echo 'Error al modificara' . $e->getMessage();
         }
-    } //END UPDATE
+    } //FIN UPDATE
 
 }
 ?>

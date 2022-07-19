@@ -98,7 +98,7 @@
                     print "error en el controlador de modificacion".$e ->getMessage();
                    }
                 
-            } 
+            } //FIN UPDATE
         }
 
     

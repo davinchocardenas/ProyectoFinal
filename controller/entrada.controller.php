@@ -24,7 +24,7 @@
             
 
 
-        }
+        }// FIN DEL CONTROLADOR DE INSERCION
 
         public function getSearchEntrada(){
             $respon = false;
@@ -36,7 +36,7 @@
                 print "there was a mistake on the creation of the display controller ". $e ->getMesagge();
             }
             return $respon;
-        }
+        }//FIN DE MOSTRAR
 
         public function getSearchAllEntrada(){
             $respon = false;
@@ -48,12 +48,13 @@
                 print "there was a mistake on the creation of the display controller ". $e ->getMesagge();
             }
             return $respon;
-        }
+        }//FIN DE MOSTRAR TODOS
 
-        public function setUpdateEntrada($id_Producto,$id_Proveedor,$id_Bodega,$cantidad,$fecha){
+        public function setUpdateEntrada($id_Registro, $id_Producto,$id_Proveedor,$id_Bodega,$fecha,$cantidad){
 
             try {
                 $objDtoEntrada = new Entrada();
+                $objDtoEntrada -> setId_Registro($id_Registro);
                 $objDtoEntrada -> setId_Producto($id_Producto);
                 $objDtoEntrada -> setId_Proveedor($id_Proveedor);
                 $objDtoEntrada -> setId_Bodega($id_Bodega);
@@ -63,19 +64,19 @@
                 $objDaoEntrada = new EntradaModel($objDtoEntrada);
                  
                 if($objDaoEntrada->mldUpdateEntrada()){
-                    echo"<script>Swal.fire(
-                        'The Internet?',
-                        'That thing is still around?',
-                        'question'
-                      )
-                      </script>";
-                      include_once 'view/module/entrada.php';
+                    echo"<script>
+                    Swal.fire(
+                        'Actualizado!',
+                        'El registro ha sido actualizado',
+                        'success'
+                    )
+                </script>";
                 }
             }catch (PDOExeption $e)     {
-                print "error en el controlador de modificacion".$e ->getMessage();
-               }
+                print "error en el controlador de modificacion". $e->getMessage();
+            }
             
-        } 
+        } //FIN UPDATE
 
      }
 ?>

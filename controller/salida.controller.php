@@ -24,7 +24,7 @@
             
 
 
-        }
+        }// FIN DEL CONTROLADOR DE INSERCION
 
         public function getSearchSalida(){
             $respon = false;
@@ -36,7 +36,7 @@
                 print "there was a mistake on the creation of the display controller ". $e ->getMesagge();
             }
             return $respon;
-        }
+        }//FIN DE MOSTRAR
 
         public function getSearchAllSalida(){
             $respon = false;
@@ -48,7 +48,7 @@
                 print "there was a mistake on the creation of the display controller ". $e ->getMesagge();
             }
             return $respon;
-        }
+        }//FIN DE MOSTRAR TODOS
 
         public function setUpdateSalida($id_Registro,$id_Producto,$id_Proveedor,$id_Bodega,$cantidad,$fecha){
 
@@ -75,7 +75,7 @@
                 print "error en el controlador de modificacion".$e ->getMessage();
                }
             
-        } 
+        } //FIN UPDATE
 
      }
 ?>

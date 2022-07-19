@@ -48,7 +48,7 @@ class CategoriaController
                 controller of show all " . $e->getMessage();
         }
         return $respon;
-    }
+    }//FIN MOSTRAR ID Y NOMBRE
 
     public function setUpdateCategoria($id_Categoria, $nombre)
     {
@@ -70,5 +70,5 @@ class CategoriaController
         } catch (PDOException $e) {
             echo 'Error al modificara' . $e->getMessage();
         }
-    } //END UPDATE
+    } //FIN UPDATE
 }

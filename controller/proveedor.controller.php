@@ -26,6 +26,7 @@ class ProveedorController
             echo "Error en el controlador de insercion " . $e->getMessage();
         }
     } // FIN DEL CONTROLADOR DE INSERCION
+
     public function getSearchProveedor()
     {
         $respon = false;
@@ -39,6 +40,7 @@ class ProveedorController
         }
         return $respon;
     } //FIN DE MOSTRAR TODOS
+
     public function getSearchDDLProveedor(){
         $respon = false;
         try{
@@ -50,7 +52,8 @@ class ProveedorController
                controller of show all" . $e->getMessage();
         }
         return $respon;
-    }
+    }//FIN MOSTRAR ID Y NOMBRE
+
     public function setUpdateProveedor($id_Proveedor, $nombre, $direccion, $agente, $telefono)
     {
         try {
@@ -73,6 +76,6 @@ class ProveedorController
         } catch (PDOException $e) {
             echo 'Error al modificara' . $e->getMessage();
         }
-    } //END UPDATE
+    } //FIN UPDATE
 
 }
