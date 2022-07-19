@@ -15,7 +15,7 @@ function eraseCategoria(){
                         'success'
                     )
                 </script>";
-                include_once 'view/module/categoria.php'; 
+                include_once 'view/module/vercategoria.php'; 
         }
 
     } catch ( PDOException $e ) {

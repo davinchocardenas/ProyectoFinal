@@ -5,11 +5,11 @@
   <section class="content-header">
     <h1>
       Producto
-      <small></small>
+      <small>creacion de producto</small>
     </h1>
     <ol class="breadcrumb">
       <li><a href="index.php"><i class="fa fa-user"></i>Home</a></li>
-      <li><a href="#"></a></li>
+      <li><a href="#">Producto</a></li>
     </ol>
   </section>
 
@@ -60,6 +60,9 @@
           <button class="btn btn-app" onclick="validateproducto(event)">
             <i class="fa fa-save"></i> Guardar
           </button>
+          <button class="btn btn-app"  onclick="getGenerarReporteproducto(event)">
+            <i class="fa fa-print"></i> reporte
+          </button>
 
         </div>
         <!-- /.box-footer-->
@@ -74,3 +77,5 @@
       }
       ?>
     </div>
+  </section>
+</div>

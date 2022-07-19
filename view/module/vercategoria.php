@@ -8,8 +8,8 @@
         <small></small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="index.php"><i class="fa fa-user"></i>Home</a></li>
-        <li><a href="#"></a></li>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="#">Categoria</a></li>
     </ol>
     </section>
 
@@ -130,7 +130,7 @@
             $objCtrCategoria = new CategoriaController();
             $objCtrCategoria->setUpdateCategoria(
               $_POST['txtId_CategoriaM'],
-              $_POST['txtNombreM'],
+              $_POST['txtNombreM']
               
             );
 

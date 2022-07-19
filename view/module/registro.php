@@ -1,61 +1,64 @@
-  <input type="text" name="txtCodigo" id="txtCodigo">
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-      <!-- Content Header (Page header) -->
-      <section class="content-header">
-        <h1 class="fa fa-user">
-          usuario
-          <small>creacion de usuario</small>
-        </h1>
-      
-        <!-- /.box -->
+<input type="text" name="txtCodigo" id="txtCodigo">
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+  <h1 class="fa fa-user">
+    Usuario
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="index.php"><i class="fa fa-user"></i> Home</a></li>
+    <li><a href="#">Usuario</a></li>
+  </ol>
+  </section>
 
-            <!-- Default box -->
-            <div class="box">
-          <div class="box-header with-border">
-            <h3 class="box-title"></h3>
+  <!-- Main content -->
+  <section class="content">
 
-            <div class="box-tools pull-right">
-              <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
-                      title="Collapse">
-                <i class="fa fa-minus"></i></button>
-              <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-                <i class="fa fa-times"></i></button>
-            </div>
-          </div>
-          <div class="box-body">
-            <table id="users" class="table table-dark table-striped table-hover">
-              <thead>
-                <tr>
-                  <input type="hidden" name="txtcc" id="txtcc">
-                  <th class="text-center">Acciones</th>
-                  <th class="text-center">CC</th>
-                  <th class="text-center">Nombre</th>
-                  <th class="text-center">Apellido</th>
-                  <th class="text-center">Direccion</th>
-                  <th class="text-center">Telefono</th>
-                  <th class="text-center">Edad</th>
-                  <th class="text-center">Rol</th>
-                  <th class="text-center">Contraseña</th>
-                 
-                </tr>
-              </thead>
-              <tbody>
-                <form method="post">
-                  <?php
-                    
-                    $objCtrlUserAll = new UserController();
-                    $objCtrlUserAll -> getSearchAllUsuario();
-                    if (gettype($objCtrlUserAll -> getSearchAllUsuario()) == "boolean"){
-                    print '    
-                    <td colspan="5">no hay datos por mostrar</td>';
-                    }else{
+  <!-- Default box -->
+  <div class="box">
+      <div class="box-header with-border">
+      <h3 class="box-title"></h3>
 
-                      foreach($objCtrlUserAll -> getSearchAllUsuario() as $key => $value){
-                        print '    
-                          <tr>
-                           <td class="text-center">
-                           <button class="btn btn-social-icon bg-yellow" onclick="getData(this.parentElement.parentElement)" data-toggle="modal" data-target="#myModal">
+      <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+          <i class="fa fa-minus"></i></button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+          <i class="fa fa-times"></i></button>
+      </div>
+      </div>
+      <div class="box-body">
+        <table id="users" class="table table-dark table-striped table-hover">
+            <thead>
+            <tr>
+              <input type="hidden" name="txtcc" id="txtcc">
+              <th class="text-center">Acciones</th>
+              <th class="text-center">CC</th>
+              <th class="text-center">Nombre</th>
+              <th class="text-center">Apellido</th>
+              <th class="text-center">Direccion</th>
+              <th class="text-center">Telefono</th>
+              <th class="text-center">Edad</th>
+              <th class="text-center">Rol</th>
+              <th class="text-center">Contraseña</th>
+                  
+            </tr>
+            </thead>
+            <tbody>
+              <form method="post">
+                <?php
+                  $objCtrlUserAll = new UserController();
+                  $objCtrlUserAll -> getSearchAllUsuario();
+                  if (gettype($objCtrlUserAll -> getSearchAllUsuario()) == "boolean"){
+                  print '    
+                  <td colspan="5">no hay datos por mostrar</td>';
+                  }else{
+
+                    foreach($objCtrlUserAll -> getSearchAllUsuario() as $key => $value){
+                      print '    
+                        <tr>
+                          <td class="text-center">
+                            <button class="btn btn-social-icon bg-yellow" onclick="getData(this.parentElement.parentElement)" data-toggle="modal" data-target="#myModal">
                               <i class="fa fa-edit"></i>
                             </button>
                             <button class="btn btn-social-icon btn-google"  onClick="erase(this.parentElement.parentElement)">
@@ -70,61 +73,38 @@
                             <td>'.$value['Rol'].'</td>
                             <td>'.$value['Contrasena'].'</td>
                           </td>
-                          </tr>
-                          ';
-                      }
-                    
-                    }
-                    
-                  ?>
+                        </tr>';
+                    } //FIN FOREACH
+                  } //FIN IF
+                ?>
               </form>
-              </tbody>
-            </table>
-          </div>
-          <!-- /.box-body -->
-          
-        </div>
-        <!-- /.box -->
-
-            <!-- Default box -->
-            <div class="box">
-          <div class="box-header with-border">
-            <h3 class="box-title"></h3>
-
-            <div class="box-tools pull-right">
-              <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
-                      title="Collapse">
-                <i class="fa fa-minus"></i></button>
-              <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-                <i class="fa fa-times"></i></button>
-            </div>
-          </div>
-    
-          <!-- /.box-body -->
-          
-          <!-- /.box-footer-->
-        </div>
-        <!-- /.box -->
-
+            </tbody>
+        </table>
+      </div>
+      <!-- /.box-body -->
+      <div class="box-footer">
+      Footer
+      </div>
+      <!-- /.box-footer-->
+      </div>
+      <!-- /.box -->
       </section>
       <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->              
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+  <div class="modal-dialog">
+  <div class="modal-content">
+
+    <!-- Modal Header -->
+    <div class="modal-header bg bg-info">
+      <h4 class="modal-title">Modificar Usuario</h4>
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
     </div>
 
-
-                  
-    <!-- The Modal -->
-    <div class="modal" id="myModal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-
-        <!-- Modal Header -->
-        <div class="modal-header bg bg-info">
-          <h4 class="modal-title">Modificar Usuario</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-
-        <!-- Modal body -->
-        <div class="modal-body">
+      <!-- Modal body -->
+      <div class="modal-body">
           <form method="post" id="formUsuarioModificar">
             <input type="hidden" name="txtCodigoE" id="txtCodigoE">
                 <div class="box-body">
@@ -229,14 +209,15 @@
                         
                         </div>
                         
-                    </div>
-                    <!-- /.row -->
+                </div>
+                <!-- /.row -->
+          </form>
       </div>
 
       <!-- Modal footer -->
       <div class="modal-footer">
         <div>
-          <button class="btn btn-app float-left" onclick="validateModifycategoria(event)">
+          <button class="btn btn-app float-left" onclick="validateModificate(event)">
             <i class="fa fa-save"></i>Guardar
           </button>
 

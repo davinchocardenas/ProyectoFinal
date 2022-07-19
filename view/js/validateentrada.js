@@ -52,54 +52,52 @@ function validateentrada(e){
 }
 function validateModifyentrada(e){
     e.preventDefault();
-    formulario   = document.getElementById("frmEntradaM");
-    cantidad     = document.getElementById("txtCantidadM");
-    fecha        = document.getElementById("txtFechaM");
+    formulario   = document.getElementById("frmEntradaModificar");
     id_Producto  = document.getElementById("txtId_ProductoM");
     id_Proveedor = document.getElementById("txtId_ProveedorM");
-    id_Categoria = document.getElementById("txtId_CategoriaM");
     id_Bodega    = document.getElementById("txtId_BodegaM");
+    id_Categoria = document.getElementById("txtId_CategoriaM");
+    fecha        = document.getElementById("txtFechaM");
+    cantidad     = document.getElementById("txtCantidadM");
 
     lvali = true;
-    if(cantidad.value==""){
-       cantidad.style.borderColor="red";
-        ohSnap('campo de Cantidad vacio', {color: 'red'});  // alert will have class 'alert-color
-        lvali = false;
-    }
-    if(fecha.value==""){
-        fecha.style.borderColor="red";
-        ohSnap('campo de Fecha vacio', {color: 'red'});  // alert will have class 'alert-color
-        lvali = false;
-    }
-    
+
     if(id_Producto.value==""){
         id_Producto.style.borderColor="red";
         ohSnap('campo de Id_Producto vacio', {color: 'red'});  // alert will have class 'alert-color'
         lvali = false;
     }
-
+    
     if(id_Proveedor.value==""){
         id_Proveedor.style.borderColor="red";
         ohSnap('campo de Id_Proveedor vacio', {color: 'red'});  // alert will have class 'alert-color
         lvali = false;
-    }
+    }    
     
-    if(id_Categoria.value==""){
-        id_Categoria.style.borderColor="red";
-        ohSnap('campo de Id_Categoria vacio', {color: 'red'});  // alert will have class 'alert-color
-        lvali = false;
-    }
-
     if(id_Bodega.value==""){
         id_Bodega.style.borderColor="red";
         ohSnap('campo de Id_Bodega vacio', {color: 'red'});  // alert will have class 'alert-color
         lvali = false;
     }
 
+    if(id_Categoria.value==""){
+        id_Categoria.style.borderColor="red";
+        ohSnap('campo de Id_Categoria vacio', {color: 'red'});  // alert will have class 'alert-color
+        lvali = false;
+    }
 
-    
+    if(fecha.value==""){
+        fecha.style.borderColor="red";
+        ohSnap('campo de Fecha vacio', {color: 'red'});  // alert will have class 'alert-color
+        lvali = false;
+    }
 
-``
+    if(cantidad.value==""){
+       cantidad.style.borderColor="red";
+        ohSnap('campo de Cantidad vacio', {color: 'red'});  // alert will have class 'alert-color
+        lvali = false;
+    }
+
     if(lvali == true ){
         formulario.submit();
     }

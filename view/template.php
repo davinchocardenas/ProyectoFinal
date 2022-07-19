@@ -90,6 +90,22 @@
             include_once 'view/module/versalida.php';
             break;
 
+        case 'allproveedor':
+            include_once 'view/module/allproveedor.php';
+            break;
+        
+        case 'allproducto':
+            include_once 'view/module/allproducto.php';
+            break;
+
+        case 'allentrada':
+            include_once 'view/module/allentrada.php';
+            break;
+    
+        case 'allsalida':
+            include_once 'view/module/allsalida.php';
+            break;
+
         default:
           include_once "view/module/presentation.php";
           break;

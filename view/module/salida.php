@@ -3,13 +3,13 @@
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-        <h1 class="fa fa-sign-in">
+        <h1 class="fa fa-sign-out">
             Salida
             <small>creacion de Salida</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="index.php"><i class="fa fa-user"></i> Home</a></li>
-            <li><a href="#">User</a></li>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="#">Salida</a></li>
 
         </ol>
         </section>
@@ -175,7 +175,7 @@
                             <!-- small box -->
                             <div class="input-group">
                                 <span class="input-group-addon">Fecha</i></span>
-                                <input type="text" class="form-control" id="txtFecha" name="txtFecha">
+                                <input type="date" class="form-control" id="txtFecha" name="txtFecha">
                                 <span class="input-group-addon"></span>
                         </div>
                         </div>
@@ -189,6 +189,9 @@
                     <div class="box-footer">
                     <button class="btn btn-app"  onclick="validatesalida(event)">
                     <i class="fa fa-save"></i>guardar
+                    </button>
+                    <button class="btn btn-app"  onclick="getGenerarReportesalida(event)">
+                    <i class="fa fa-print"></i>reporte
                     </button>
                     </div>
                     <!-- /.box-footer-->

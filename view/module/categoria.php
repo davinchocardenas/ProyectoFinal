@@ -5,11 +5,11 @@
   <section class="content-header">
     <h1>
       Categoria
-      <small></small>
+      <small>creacion de categoria</small>
     </h1>
     <ol class="breadcrumb">
-      <li><a href="index.php"><i class="fa fa-user"></i>Home</a></li>
-      <li><a href="#"></a></li>
+      <li><a href="index.php">Home</a></li>
+      <li><a href="#">Categoria</a></li>
     </ol>
   </section>
 
@@ -63,3 +63,4 @@
       }
       ?>
     </div>
+</div>

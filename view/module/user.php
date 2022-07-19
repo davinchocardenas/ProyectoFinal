@@ -9,7 +9,7 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="index.php"><i class="fa fa-user"></i> Home</a></li>
-        <li><a href="#">User</a></li>
+        <li><a href="#">Usuario</a></li>
         
       </ol>
     </section>
@@ -116,12 +116,12 @@
                     <div class="col-lg-6 col-xs-6">
                     <!-- small box -->
                     <div class="input-group">
-                        <span class="input-group-addon">Rol</i></span>
-                        <select class="form-control" id="txtrol" name="txtrol">
-                      <option value="0" selected disabled hidden>Seleccione su estado</option>
-                      <option value="administrativo">administrativo</option>
-                      <option value="empleado">Empleado</option>
-                    </select>
+                      <span class="input-group-addon">Rol</i></span>
+                      <select class="form-control" id="txtrol" name="txtrol">
+                        <option value="0" selected disabled hidden>Seleccione su estado</option>
+                        <option value="administrativo">administrativo</option>
+                        <option value="empleado">Empleado</option>
+                      </select>
                     </div>
 
                     </div>
@@ -150,35 +150,28 @@
                 <button class="btn btn-app"  onclick="getGenerarReporte(event)">
                   <i class="fa fa-print"></i> reporte
                 </button>
-                </div>
+            </div>
                 <!-- /.box-footer-->
         </form>
         <?php
 
-        if (isset($_POST["txtcc"])) {
-          
-          $objCtrlUser = new UserController();
-          $objCtrlUser -> setInsertusuario(
-            $_POST["txtcc"],
-            $_POST["txtnombre"],
-            $_POST["txtapellido"],
-            $_POST["txtdireccion"],
-            $_POST["txttelefono"],
-            $_POST["txtedad"],
-            $_POST["txtrol"],
-            $_POST["txtcontrasena"]
-          );
-        }
+          if (isset($_POST["txtcc"])) {
+            
+            $objCtrlUser = new UserController();
+            $objCtrlUser -> setInsertusuario(
+              $_POST["txtcc"],
+              $_POST["txtnombre"],
+              $_POST["txtapellido"],
+              $_POST["txtdireccion"],
+              $_POST["txttelefono"],
+              $_POST["txtedad"],
+              $_POST["txtrol"],
+              $_POST["txtcontrasena"]
+            );
+          }
 
         ?>
       </div>
-      <!-- /.box -->
-
-           <!-- Default box -->
-           
-
-      </div>
-
-    </div>
+    </section>
   </div>
 </div>

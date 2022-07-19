@@ -9,7 +9,7 @@
     </h1>
     <ol class="breadcrumb">
         <li><a href="index.php"><i class="fa fa-user"></i>Home</a></li>
-        <li><a href="#"></a></li>
+        <li><a href="#">Producto</a></li>
     </ol>
     </section>
 

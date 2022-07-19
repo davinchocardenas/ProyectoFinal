@@ -8,8 +8,8 @@
         <small>creacion de Entrada</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="index.php"><i class="fa fa-user"></i>Home</a></li>
-        <li><a href="#">User</a></li>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="#">Entrada</a></li>
 
       </ol>
     </section>
@@ -175,7 +175,7 @@
                             <!-- small box -->
                             <div class="input-group">
                                 <span class="input-group-addon">Fecha</i></span>
-                                <input type="text" class="form-control" id="txtFecha" name="txtFecha">
+                                <input type="date" class="form-control" id="txtFecha" name="txtFecha">
                                 <span class="input-group-addon"></span>
                         </div>
                         </div>
@@ -192,6 +192,9 @@
                 <div class="box-footer">
                 <button class="btn btn-app"  onclick="validateentrada(event)">
                   <i class="fa fa-save"></i>guardar
+                </button>
+                <button class="btn btn-app"  onclick="getGenerarReporteentrada(event)">
+                <i class="fa fa-print"></i>reporte
                 </button>
                 </div>
                 <!-- /.box-footer-->

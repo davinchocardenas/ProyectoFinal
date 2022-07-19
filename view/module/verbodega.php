@@ -8,8 +8,8 @@
         <small></small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="index.php"><i class="fa fa-user"></i>Home</a></li>
-        <li><a href="#"></a></li>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="#">Bodega</a></li>
     </ol>
     </section>
 
@@ -71,12 +71,14 @@
                 ?>
             </form>
             </tbody>
-        </table>
+           </table>
+          </div>
+          <!-- /.box-body -->
         </div>
+        <!-- /.box -->
             <!-- /.box-body -->
-            <div class="box-footer">
+        <div class="box-footer">
         Footer
-        </div>
         <!-- /.box-footer-->
     </div>
     <!-- /.box -->

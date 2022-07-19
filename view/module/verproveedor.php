@@ -8,8 +8,8 @@
         <small></small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="index.php"><i class="fa fa-user"></i>Home</a></li>
-        <li><a href="#">User</a></li>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="#">Proveedor</a></li>
     </ol>
     </section>
 

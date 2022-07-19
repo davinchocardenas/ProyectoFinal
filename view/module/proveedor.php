@@ -8,8 +8,8 @@
       <small>creacion de proveedor</small>
     </h1>
     <ol class="breadcrumb">
-      <li><a href="index.php"><i class="fa fa-user"></i>Home</a></li>
-      <li><a href="#">User</a></li>
+      <li><a href="index.php">Home</a></li>
+      <li><a href="#">Proveedor</a></li>
     </ol>
   </section>
 
@@ -78,7 +78,9 @@
           <button class="btn btn-app" onclick="validateproveedor(event)">
             <i class="fa fa-save"></i> Guardar
           </button>
-
+          <button class="btn btn-app"  onclick="getGenerarReporteproveedor(event)">
+            <i class="fa fa-print"></i> reporte
+          </button>
         </div>
         <!-- /.box-footer-->
       </form>
@@ -93,3 +95,5 @@
         );
       }
       ?>
+    </div>
+</div>

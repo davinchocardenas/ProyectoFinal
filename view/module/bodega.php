@@ -8,8 +8,8 @@
       <small>creacion de bodega</small>
     </h1>
     <ol class="breadcrumb">
-      <li><a href="index.php"><i class="fa fa-user"></i>Home</a></li>
-      <li><a href="#">User</a></li>
+      <li><a href="index.php">Home</a></li>
+      <li><a href="#">Bodega</a></li>
     </ol>
   </section>
 
@@ -83,3 +83,5 @@
         );
       }
       ?>
+    </div>
+</div>

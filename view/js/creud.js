@@ -362,21 +362,22 @@ function getDataProducto(obj) {
 
 function getDataEntrada(obj){
   
+  let id_Producto = obj.children[1].innerHTML;
+  let id_Proveedor = obj.children[2].innerHTML;
+  let id_Bodega = obj.children[3].innerHTML;
+  let id_Categoria = obj.children[4].innerHTML;
+  let fecha = obj.children[5].innerHTML;
+  let cantidad= obj.children[6].innerHTML;
   let id_Registro = obj.children[0].innerHTML;
-  let id_Producto = obj.children[3].innerHTML;
-  let id_Proveedor = obj.children[4].innerHTML;
-  let cantidad= obj.children[1].innerHTML;
-  let id_Bodega = obj.children[6].innerHTML;
-  let id_Categoria = obj.children[5].innerHTML;
-  let fecha = obj.children[2].innerHTML;
 
-  document.getElementById("txt_RegistroM").value= id_Registro;
+
   document.getElementById("txtId_ProductoM").value = id_Producto;
   document.getElementById("txtId_ProveedorM").value = id_Proveedor;
-  document.getElementById("txtCantidadM").value = cantidad;
   document.getElementById("txt_BodegaM").value= id_Bodega;
   document.getElementById("txt_CategoriaM").value= id_Categoria;
   document.getElementById("txtFechaM").value= fecha;
+  document.getElementById("txtCantidadM").value = cantidad;
+  document.getElementById("txt_RegistroM").value= id_Registro;
 
 
 }
@@ -402,10 +403,27 @@ function getDataSalida(obj){
 
 }
 
+function getGenerarReporteproveedor(e){
+  window.open("view/module/allproveedor.php","_blank")
+  e.preventDefault();
+}
+
 function getGenerarReporte(e){
   window.open("view/module/alluser.php","_blank")
   e.preventDefault();
+}
 
+function getGenerarReporteproducto(e){
+  window.open("view/module/allproducto.php","_blank")
+  e.preventDefault();
+}
 
-  
+function getGenerarReporteentrada(e){
+  window.open("view/module/allentrada.php","_blank")
+  e.preventDefault();
+}
+
+function getGenerarReportesalida(e){
+  window.open("view/module/allsalida.php","_blank")
+  e.preventDefault();
 }
