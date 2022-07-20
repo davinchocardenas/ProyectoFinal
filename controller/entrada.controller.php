@@ -15,7 +15,13 @@
                 $objDaoEntrada = new EntradaModel($objDtoEntrada);
 
                 if($objDaoEntrada -> mldInsertEntrada()){
-                    print "<script>alert('done')<script>";
+                    echo "<script>
+                    Swal.fire(
+                        'Guardado',
+                        'Registro insertado y Cantidad ingresada',
+                        'success'
+                        )
+                    </script>";
                 }
 
             } catch (Exeption $e) {
