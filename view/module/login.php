@@ -13,7 +13,7 @@
 		<link rel="stylesheet" href="view/css/rellenar.css">
 
 		</head>
-		<body class="repet" style="background-image: url(view/img/bg.jpg);"> 
+		<body class="repet" style="background-image: url(view/img/fondo.jpg);"> 
 		<section class="ftco-section">
 			<div class="container">
 				<div class="row justify-content-center">
@@ -30,10 +30,10 @@
 						</div>
 					<div class="form-group">
 					<input id="password-field" type="password" class="form-control"  name= "contrasena" placeholder="contraseña" required>
-					<span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+					<span toggle="#password-field"></span>
 					</div>
 					<div class="form-group">
-						<button type="submit" class="form-control btn btn-primary submit px-3" value="Log in">ingresar</button>
+						<button type="submit" class="form-control btn btn-primary submit px-3 " value="Log in">ingresar</button>
 						</div>
 					</div>
 				</form>
