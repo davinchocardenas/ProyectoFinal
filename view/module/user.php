@@ -154,7 +154,6 @@
                 <!-- /.box-footer-->
         </form>
         <?php
-
           if (isset($_POST["txtcc"])) {
             
             $objCtrlUser = new UserController();

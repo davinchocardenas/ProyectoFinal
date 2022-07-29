@@ -55,6 +55,7 @@
                   }else{
 
                     foreach($objCtrlUserAll -> getSearchAllUsuario() as $key => $value){
+                      
                       print '    
                         <tr>
                           <td class="text-center">
@@ -71,7 +72,7 @@
                             <td>'.$value['Telefono'].'</td>
                             <td>'.$value['Edad'].'</td>
                             <td>'.$value['Rol'].'</td>
-                            <td>'.$value['Contrasena'].'</td>
+                            <td>'.password_hash($value['Contrasena'],PASSWORD_DEFAULT).'</td>
                           </td>
                         </tr>';
                     } //FIN FOREACH
