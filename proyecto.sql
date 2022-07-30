@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-07-2022 a las 00:54:28
+-- Tiempo de generación: 30-07-2022 a las 16:32:15
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -69,13 +69,6 @@ DELETE FROM salida WHERE Id_Salida = _Id_Salida;
 
 END$$
 
-DROP PROCEDURE IF EXISTS `spDeleteUser`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spDeleteUser` (IN `_code` INT(4))   BEGIN
- 
-DELETE FROM user WHERE CODE = _code;
-
-END$$
-
 DROP PROCEDURE IF EXISTS `spDeleteUsuario`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spDeleteUsuario` (IN `_CC` INT(5))   BEGIN
  
@@ -96,9 +89,11 @@ INSERT INTO categoria (Nombre) VALUES (_Nombre);
 END$$
 
 DROP PROCEDURE IF EXISTS `SpInsertEntrada`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SpInsertEntrada` (IN `_Id_Producto` VARCHAR(15), IN `_Id_Proveedor` VARCHAR(15), IN `_Id_Bodega` VARCHAR(15), IN `_Id_Categoria` VARCHAR(15), IN `_Cantidad` INT(20), IN `_Fecha` VARCHAR(15))   BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SpInsertEntrada` (IN `_Id_Producto` VARCHAR(15), IN `_Id_Proveedor` VARCHAR(15), IN `_Id_Bodega` VARCHAR(15), IN `_Id_Categoria` VARCHAR(15), IN `_Fecha` VARCHAR(15), IN `_Cantidad` INT(20))   BEGIN
 INSERT INTO entrada (Id_Producto, Id_Proveedor, Id_Bodega, Id_Categoria, cantidad,fecha)
 VALUES (_Id_Producto, _Id_Proveedor, _Id_Bodega, _Id_Categoria, _cantidad,_fecha);
+
+UPDATE PRODUCTO SET CANTIDAD = CANTIDAD + _cantidad WHERE ID_PRODUCTO = _Id_Producto;
 
 END$$
 
@@ -115,15 +110,11 @@ INSERT INTO proveedor (Nombre,Direccion,Agente,Telefono) VALUES (_Nombre,_Direcc
 END$$
 
 DROP PROCEDURE IF EXISTS `SpInsertSalida`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SpInsertSalida` (IN `_Id_Producto` VARCHAR(15), IN `_Id_Proveedor` VARCHAR(15), IN `_Id_Bodega` VARCHAR(15), IN `_Id_Categoria` VARCHAR(15), IN `_Cantidad` INT(20), IN `_Fecha` VARCHAR(15))   BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SpInsertSalida` (IN `_Id_Producto` VARCHAR(15), IN `_Id_Proveedor` VARCHAR(15), IN `_Id_Bodega` VARCHAR(15), IN `_Id_Categoria` VARCHAR(15), IN `_Fecha` VARCHAR(15), IN `_Cantidad` INT(20))   BEGIN
 INSERT INTO salida (Id_Producto, Id_Proveedor, Id_Bodega, Id_Categoria, cantidad,fecha)
 VALUES (_Id_Producto, _Id_Proveedor, _Id_Bodega, _Id_Categoria, _cantidad,_fecha);
 
-END$$
-
-DROP PROCEDURE IF EXISTS `spInsertUser`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertUser` (IN `_name` VARCHAR(100), IN `_lastname` VARCHAR(100), IN `_USER` VARCHAR(50), IN `_password` VARCHAR(50))   BEGIN
-INSERT INTO USER(name,lastname,PASSWORD,USER) VALUES (_name,_lastname,_password,_user);
+UPDATE PRODUCTO SET CANTIDAD = CANTIDAD - _cantidad WHERE ID_PRODUCTO = _Id_Producto;
 
 END$$
 
@@ -143,7 +134,10 @@ end$$
 DROP PROCEDURE IF EXISTS `SpSearchAllEntrada`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SpSearchAllEntrada` ()   BEGIN
 
-SELECT Id_Registro, Id_Producto, Id_Proveedor, Id_Bodega, Id_Categoria, Fecha, Cantidad from entrada;
+SELECT E.Id_Registro, P.Descripcion PRODUCTO, PV.Nombre PROVEEDOR, B.Nombre BODEGA, C.Nombre CATEGORIA, E.Fecha, E.Cantidad from entrada E INNER JOIN PRODUCTO P ON E.Id_Producto = P.Id_Producto 
+JOIN PROVEEDOR PV ON E.Id_Proveedor = PV.Id_Proveedor
+JOIN BODEGA B ON E.Id_Bodega = B.Id_Bodega
+JOIN CATEGORIA C ON E.Id_Categoria = C.Id_Categoria;
 
 END$$
 
@@ -157,16 +151,12 @@ end$$
 DROP PROCEDURE IF EXISTS `SpSearchAllSalida`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SpSearchAllSalida` ()   BEGIN
 
-SELECT Id_Salida, Id_Producto, Id_Proveedor, Id_Bodega, Id_Categoria, Fecha, Cantidad from salida;
+SELECT S.Id_Salida, P.Descripcion PRODUCTO, PV.Nombre PROVEEDOR, B.Nombre BODEGA, C.Nombre CATEGORIA, S.Fecha, S.Cantidad from salida S INNER JOIN PRODUCTO P ON S.Id_Producto = P.Id_Producto 
+JOIN PROVEEDOR PV ON S.Id_Proveedor = PV.Id_Proveedor
+JOIN BODEGA B ON S.Id_Bodega = B.Id_Bodega
+JOIN CATEGORIA C ON S.Id_Categoria = C.Id_Categoria;
 
 END$$
-
-DROP PROCEDURE IF EXISTS `spSearchAllUser`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spSearchAllUser` ()   BEGIN
-
-SELECT NAME,LASTNAME,USER,CODE,PASSWORD FROM USER;
-
-end$$
 
 DROP PROCEDURE IF EXISTS `spSearchAllUsuario`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spSearchAllUsuario` ()   BEGIN
@@ -259,14 +249,6 @@ WHERE Id_Salida = _Id_Salida;
 
 END$$
 
-DROP PROCEDURE IF EXISTS `spSearchUser`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spSearchUser` (IN `_code` INT(4))   BEGIN
-
-SELECT CODE, NAME,lastname, password FROM user 
-WHERE CODE = _code;
-
-END$$
-
 DROP PROCEDURE IF EXISTS `spSearchUsuario`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spSearchUsuario` (IN `_CC` INT(11))   BEGIN
 
@@ -300,7 +282,7 @@ WHERE Id_Categoria = _Id_Categoria;
 END$$
 
 DROP PROCEDURE IF EXISTS `spUpdateEntrada`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdateEntrada` (IN `_Id_Registro` INT(5), IN `_Id_Producto` VARCHAR(15), IN `_Id_Proveedor` VARCHAR(15), IN `_Id_Bodega` VARCHAR(15), IN `_Id_Categoria` VARCHAR(15), IN `_Cantidad` INT(20), IN `_Fecha` VARCHAR(15))   BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdateEntrada` (IN `_Id_Registro` INT(5), IN `_Id_Producto` VARCHAR(15), IN `_Id_Proveedor` VARCHAR(15), IN `_Id_Bodega` VARCHAR(15), IN `_Id_Categoria` VARCHAR(15), IN `_Fecha` VARCHAR(15), IN `_Cantidad` INT(20))   BEGIN
 
 UPDATE entrada
 SET Id_Producto = _Id_Producto,
@@ -355,21 +337,6 @@ WHERE Id_Salida = _Id_Salida;
 
 END$$
 
-DROP PROCEDURE IF EXISTS `spUpdateUser`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdateUser` (IN `_code` INT(4), IN `_name` VARCHAR(100), IN `_lastname` VARCHAR(100), IN `_user` VARCHAR(50), IN `_password` VARCHAR(50))   BEGIN
-
-UPDATE user 
-SET NAME = _name,
-LASTNAME= _lastname,
-USER= _user,
-PASSWORD= _password
-
-
-WHERE CODE=_code;
-
-
-END$$
-
 DROP PROCEDURE IF EXISTS `spUpdateUsuario`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdateUsuario` (IN `_CC` INT(11), IN `_Nombre` VARCHAR(20), IN `_Apellido` VARCHAR(20), IN `_Direccion` VARCHAR(20), IN `_Telefono` INT(15), IN `_Edad` INT(3), IN `_Rol` VARCHAR(15), IN `_Contrasena` VARCHAR(20))   BEGIN
 UPDATE usuario 
@@ -400,7 +367,7 @@ CREATE TABLE IF NOT EXISTS `bodega` (
   `Seccion` varchar(30) NOT NULL,
   `Ubicacion` varchar(30) NOT NULL,
   PRIMARY KEY (`Id_Bodega`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `bodega`
@@ -421,7 +388,7 @@ CREATE TABLE IF NOT EXISTS `categoria` (
   `Id_Categoria` int(150) NOT NULL AUTO_INCREMENT,
   `Nombre` varchar(50) NOT NULL,
   PRIMARY KEY (`Id_Categoria`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `categoria`
@@ -452,7 +419,7 @@ CREATE TABLE IF NOT EXISTS `entrada` (
   KEY `Id_Proveedor` (`Id_Proveedor`),
   KEY `Id_Bodega` (`Id_Bodega`),
   KEY `Id_Categoria` (`Id_Categoria`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `entrada`
@@ -460,10 +427,19 @@ CREATE TABLE IF NOT EXISTS `entrada` (
 
 INSERT INTO `entrada` (`Id_Registro`, `Id_Producto`, `Id_Proveedor`, `Id_Bodega`, `Id_Categoria`, `Fecha`, `Cantidad`) VALUES
 (1, 3, 5, 1, 4, '15', 50),
-(2, 8, 239, 5, 6, '16', 25),
-(3, 5, 240, 5, 4, '7', 18),
-(4, 8, 239, 1, 3, '7', 18),
-(5, 5, 240, 1, 3, '10', 22);
+(6, 3, 5, 1, 3, '14', 17),
+(7, 3, 5, 1, 4, '3', 16),
+(8, 3, 5, 1, 4, '2', 15),
+(9, 3, 5, 1, 3, '1', 17),
+(10, 3, 5, 1, 3, '2', 17),
+(11, 3, 222, 1, 3, '15', 3),
+(13, 10, 238, 5, 6, '2022-07-19', 10),
+(14, 3, 5, 1, 3, '2022-07-20', 5),
+(15, 11, 238, 5, 3, '2022-07-22', 10),
+(16, 5, 238, 5, 3, '2022-07-23', 17),
+(17, 5, 111, 5, 4, '2022-07-26', 10),
+(18, 3, 5, 1, 3, '2022-07-26', 19),
+(19, 3, 5, 1, 3, '2022-07-26', 10);
 
 -- --------------------------------------------------------
 
@@ -478,18 +454,21 @@ CREATE TABLE IF NOT EXISTS `producto` (
   `Stock_Minimo` int(5) NOT NULL,
   `cantidad` int(10) NOT NULL,
   PRIMARY KEY (`Id_Producto`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `producto`
 --
 
 INSERT INTO `producto` (`Id_Producto`, `Descripcion`, `Stock_Minimo`, `cantidad`) VALUES
-(3, 'muestras', 10, 10),
-(5, 'sadsfs', 0, 0),
-(6, 'gdfhsfdh', 4, 0),
-(7, 'eeee', 90, 0),
-(8, 'EMA', 3, 0);
+(3, 'Muestras', 10, 37),
+(5, 'Lana', 0, 34),
+(6, 'Algodon', 4, 17),
+(7, 'Botones', 90, 17),
+(8, 'Cierres', 3, -61),
+(9, 'Cuero', 20, 67),
+(10, 'Retaso', 7, 5),
+(11, 'Tela negra', 6, 5);
 
 -- --------------------------------------------------------
 
@@ -505,21 +484,18 @@ CREATE TABLE IF NOT EXISTS `proveedor` (
   `Agente` varchar(30) NOT NULL,
   `Telefono` int(15) NOT NULL,
   PRIMARY KEY (`Id_Proveedor`)
-) ENGINE=InnoDB AUTO_INCREMENT=242 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=249 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `proveedor`
 --
 
 INSERT INTO `proveedor` (`Id_Proveedor`, `Nombre`, `Direccion`, `Agente`, `Telefono`) VALUES
-(5, 'maurotextiles', 'calle 123', 'mauro ', 2147483647),
-(111, 'RacTelas', 'Calle 11 # 11 11', 'Carlos Lopez', 1111111),
-(222, 'VillaTelas', 'Calle 2 # 2 22', 'Laura Villa', 2222222),
-(236, 'jose', 'far', 'far', 319565421),
-(237, 'jorge', 'fabian', 'calle calle', 3147951),
-(238, 'farfar', 'far', 'far', 65778),
-(239, 'fabian', 'adsfasdf', 'adsfadsfasdf', 234234234),
-(240, 'Daniel', 'calle 62 # 57 95', 'jorge', 3712808);
+(5, 'Distribuidora M', 'Cl. 48 # 56 36 Medellin', 'Mauro ', 316215224),
+(111, 'Rikato', 'Cra. 45a #63 12 itagui', 'Carlos Lopez', 300349025),
+(222, 'Soinco S.A.S', '50Sur 100 Cra. 44 itagui', 'Laura Villa', 42887474),
+(236, 'AR INSUMOS', 'Cra. 50c #2 27 2 Medellin', 'Jose', 319565421),
+(238, 'Almacen francis', 'Cra.50c#2sur161 Medellin', 'Francisco ', 6042292);
 
 -- --------------------------------------------------------
 
@@ -541,7 +517,7 @@ CREATE TABLE IF NOT EXISTS `salida` (
   KEY `Id_Proveedor` (`Id_Proveedor`),
   KEY `Id_Bodega` (`Id_Bodega`),
   KEY `Id_Categoria` (`Id_Categoria`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `salida`
@@ -549,31 +525,13 @@ CREATE TABLE IF NOT EXISTS `salida` (
 
 INSERT INTO `salida` (`Id_Salida`, `Id_Producto`, `Id_Proveedor`, `Id_Bodega`, `Id_Categoria`, `Fecha`, `Cantidad`) VALUES
 (1, 3, 238, 1, 4, '10', 22),
-(2, 8, 237, 5, 3, '25', 17);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `user`
---
-
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
-  `CODE` int(4) NOT NULL,
-  `USER` varchar(30) NOT NULL,
-  `PASSWORD` varchar(50) NOT NULL,
-  `NAME` varchar(100) NOT NULL,
-  `LASTNAME` varchar(100) NOT NULL,
-  PRIMARY KEY (`CODE`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `user`
---
-
-INSERT INTO `user` (`CODE`, `USER`, `PASSWORD`, `NAME`, `LASTNAME`) VALUES
-(2, 'MOR', '150', 'pepe', 'perez'),
-(4, 'gupe', '4862', 'guillermo', 'de la peña');
+(3, 3, 236, 1, 4, '18', 5),
+(4, 8, 236, 5, 3, '2022-07-21', 78),
+(5, 10, 238, 5, 6, '2022-07-19', 5),
+(6, 3, 5, 1, 4, '2022-07-19', 20),
+(7, 11, 238, 5, 3, '2022-07-22', 5),
+(8, 5, 238, 1, 3, '2022-07-23', 10),
+(9, 3, 5, 1, 3, '2022-07-26', 2);
 
 -- --------------------------------------------------------
 
@@ -599,7 +557,10 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 --
 
 INSERT INTO `usuario` (`CC`, `Nombre`, `Apellido`, `Direccion`, `Telefono`, `Edad`, `Rol`, `Contrasena`) VALUES
-(2147483647, 'mauro', 'muñoz', 'calle 123', 2147483647, 18, 'administrativo', '150');
+(123, 'dario', 'lopez', 'calle 56', 444444, 41, 'administrativo', '3c9909afec25354d551d'),
+(123456, 'mauro', 'zapata', 'calle 123', 2147483647, 18, 'administrativo', '1193088945'),
+(11234567, 'Daniel', 'Correa', 'calle 56', 444444, 40, 'empleado', '3712308'),
+(12853088, 'Simon', 'lopez', 'calle 67#32 bello', 345678, 23, 'empleado', '63a86059029812971a30');
 
 --
 -- Restricciones para tablas volcadas
